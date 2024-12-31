@@ -23,7 +23,7 @@ export default function Hero () {
       <section className='description'>
         <div className='description-header'>
           <h2 style={{ color: secondaryTextColor }}>Decentralized Wellness</h2>
-          <p> Empowering individuals with secure, private, and personalized mental health support. Our platform offers 1:1 individual therapy with licensed professionals, expert-led workshops on topics like resilience and trauma healing, and AI-powered therapy through THERA Agents, your customizable digital wellness companion. Designed for the modern, decentralized world, we provide accessible care tailored to your unique journey.</p>
+          <p>Empowering individuals with secure, private, and personalized mental health support. Our platform offers 1:1 individual therapy with licensed professionals, expert-led workshops on topics like resilience and trauma healing, and AI-powered therapy through THERA Agents, your customizable digital wellness companion. Designed for the modern, decentralized world, we provide accessible care tailored to your unique journey.</p>
         </div>
 
         <div
@@ -39,7 +39,7 @@ export default function Hero () {
             </article>
             <article>
                 <h4><ExternalLinkGradient /> Workshops</h4>
-                <p>Expert-led sessions focused on resilience, healing, and growth in a collaborative environment.</p>
+                <p>Expert-led sessions focused on resilience, healing, and growth in a collaborative environment. </p>
               </article>
 
         </div>
