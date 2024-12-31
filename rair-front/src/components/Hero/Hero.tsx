@@ -19,12 +19,12 @@ export default function Hero () {
         onclick={() => alert('hello')}
         backgroundColor={secondaryColor}
         textColor={secondaryTextColor}
-      >Get Started</OvalButton>
+      >Coming soon</OvalButton>
 
       <section className='description'>
         <div className='description-header'>
-          <h2 style={{ color: secondaryTextColor }}>Decentralized Wellness</h2>
-          <p> Empowering individuals with secure, private, and personalized mental health support. Our platform offers 1:1 individual therapy with licensed professionals, expert-led workshops on topics like resilience and trauma healing, and AI-powered therapy through THERA Agents, your customizable digital wellness companion. Designed for the modern, decentralized world, we provide accessible care tailored to your unique journey.</p>
+          <h2 style={{ color: secondaryTextColor }}>The Future of Wellness</h2>
+          <p> Empowering individuals with secure, private, and personalized mental health support, Onchain Wellness redefines care for the modern, decentralized world. Our platform offers 1:1 individual therapy with licensed professionals, expert-led workshops by industry thought leaders, as well as TxAI, a groundbreaking digital wellness companion that rewards users for engaging in healthy behaviors. Accessible, innovative, and tailored to your unique journey, we’re here to support you every step of the way.</p>
         </div>
 
         <div
@@ -36,7 +36,7 @@ export default function Hero () {
             </article>
             <article>
                 <h4><ExternalLinkGradient /> AI Assisted Therapy</h4>
-                <p>Introducing our THERA Agents, your customizable digital therapist offering on-demand, private mental health support.</p>
+                <p>Introducing TxAI, your customizable wellness companion, offering on-demand, private mental health support while rewarding you with incentives for building and maintaining healthy habits.</p>
             </article>
             <article>
                 <h4><ExternalLinkGradient /> Workshops</h4>
