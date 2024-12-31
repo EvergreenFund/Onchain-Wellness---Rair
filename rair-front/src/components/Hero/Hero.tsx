@@ -3,7 +3,6 @@ import OvalButton from '../OvalButton/OvalButton';
 import './Hero.css';
 import ExternalLinkGradient from '../../images/ExternalLinkGradient';
 
-
 export default function Hero () {
   const {
     primaryColor,
