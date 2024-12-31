@@ -137,9 +137,7 @@ const UploadedListBox: React.FC<IUploadedListBox> = ({
       className="medialist-box"
       key={index}
       style={{
-        backgroundColor: isDarkMode
-          ? `color-mix(in srgb, ${primaryColor}, #888888)`
-          : 'var(--rhyno)',
+        backgroundColor: isDarkMode ? `color-mix(in srgb, ${primaryColor}, #888888)` : 'var(--rhyno)',
         color: textColor,
         borderRadius: '15px',
         marginTop: '20px'
