@@ -34,7 +34,7 @@ const Home = () => {
       >
         <h2>Let’s Personalize Your Wellness Experience</h2>
         <OvalButton
-          onclick={() => alert('hello')}
+          onclick={() => {}}
           backgroundColor={secondaryTextColor}
           textColor={primaryColor}
         >
@@ -80,7 +80,7 @@ const Home = () => {
               </ul>
             </div>
             <div className='plan-card-footer'>
-              <BlockButton onclick={() => alert('hello')} backgroundColor={secondaryColor} textColor={secondaryColor}>
+              <BlockButton onclick={() => {}} backgroundColor={secondaryColor} textColor={secondaryColor}>
                 <span style={{
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -113,7 +113,7 @@ const Home = () => {
               </ul>
             </div>
             <div className='plan-card-footer'>
-              <BlockButton onclick={() => alert('hello')} backgroundColor={secondaryColor} textColor={secondaryColor}>
+              <BlockButton onclick={() => {}} backgroundColor={secondaryColor} textColor={secondaryColor}>
                 <span style={{
                   display: 'flex',
                   justifyContent: 'space-between',

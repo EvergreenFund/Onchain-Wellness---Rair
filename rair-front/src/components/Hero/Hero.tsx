@@ -16,7 +16,7 @@ export default function Hero () {
     <div className='hero'>
       <h1 style={{ color: secondaryTextColor }}><span className='border-only'><span aria-hidden={true} className='over'>onchain</span>onchain</span> wellness<br/>for <span className='border-only'><span aria-hidden={true} className='over'>a</span>a</span> <span className='border-only'><span aria-hidden={true} className='over'>better</span>better</span> future</h1>
       <OvalButton
-        onclick={() => alert('hello')}
+        onclick={() => {}}
         backgroundColor={secondaryColor}
         textColor={secondaryTextColor}
       >Coming soon</OvalButton>
