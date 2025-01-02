@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useReducer } from 'react';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircularProgress } from '@mui/material';
 import axios from 'axios';
@@ -117,7 +116,7 @@ const LikeButton: React.FC<ILikeButton> = ({
         <CircularProgress sx={{ color: '#E882D5' }} size={40} thickness={4} />
       ) : (
         <>
-          <TooltipBox
+          {/* <TooltipBox
             title={`${liked ? 'Remove from Favorites' : 'Add to Favorites'}`}>
             <div
               className={likeButtonStyle}
@@ -133,7 +132,7 @@ const LikeButton: React.FC<ILikeButton> = ({
                 className="like-button"
               />
             </div>
-          </TooltipBox>
+          </TooltipBox> */}
         </>
       )}
     </>
