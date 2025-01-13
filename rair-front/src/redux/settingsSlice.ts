@@ -66,7 +66,7 @@ export const loadSettings = createAsyncThunk(
     const response = await axios.get("/api/settings");
     dispatch(
       setCustomColors({
-        ...response.data.settings,
+        // ...response.data.settings,
       })
     );
     dispatch(
