@@ -267,7 +267,7 @@ const useConnectUser = () => {
       let user = userDataResponse.user;
       if (!userDataResponse.user || !user) {
         // If the user doesn't exist, send a request to register him using a TEMP adminNFT
-        firstTimeLogin = true;
+        let firstTimeLogin = true;
         const userCreation = await rairSDK.users.createUser({
           publicAddress: loginData.userAddress,
         });

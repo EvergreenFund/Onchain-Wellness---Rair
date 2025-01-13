@@ -531,7 +531,6 @@ const Agreements: React.FC<IAgreementsPropsType> = ({
           <div className="wait-minting-token-text">
             Blockchain in progress.. please wait!
           </div>
-          <img src={`${GrandpaWait}`} alt="waiting minting token" />
         </div>
       )}
     </div>

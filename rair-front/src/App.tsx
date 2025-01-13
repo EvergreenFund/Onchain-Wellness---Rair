@@ -169,7 +169,7 @@ function App() {
     import.meta.env.VITE_DISABLE_CREATOR_VIEWS === "true";
 
   useEffect(() => {
-    // dispatch(loadSettings());
+    dispatch(loadSettings());
     dispatch(loadCategories());
   }, []);
 

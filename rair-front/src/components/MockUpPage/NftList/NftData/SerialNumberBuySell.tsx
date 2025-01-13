@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { formatEther } from 'ethers';
 import { Hex } from 'viem';
@@ -27,6 +27,8 @@ import defaultImage from '../../../UserProfileSettings/images/defaultUserPicture
 import { ImageLazy } from '../../ImageLazy/ImageLazy';
 import { ISerialNumberBuySell } from '../../mockupPage.types';
 import SelectNumber from '../../SelectBox/SelectNumber/SelectNumber';
+import OvalButton from '../../../OvalButton/OvalButton';
+import axios from 'axios';
 
 const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
   handleClickToken,
@@ -41,7 +43,8 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
   const { currentUserAddress, exchangeRates } = useAppSelector(
     (state) => state.web3
   );
-  const { primaryColor } = useAppSelector((store) => store.colors);
+  const { primaryColor, secondaryColor, secondaryTextColor } = useAppSelector((store) => store.colors);
+  const [ inviteLink, setInviteLink ] = useState<string>();
   const { databaseResales } = useAppSelector((store) => store.settings);
   const { currentCollection, currentCollectionMetadata } = useAppSelector(
     (store) => store.tokens
@@ -88,7 +91,7 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
         <>
           Awaiting transaction completion
           <div className="wait-minting-token">
-            <img src={`${GrandpaWait}`} alt="waiting minting token" />
+            {/* <img src={`${GrandpaWait}`} alt="waiting minting token" /> */}
           </div>
         </>
       ),
@@ -302,6 +305,51 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
     dispatch
   ]);
 
+  const goToExternalLink = (link: string) => {
+    window.open(link, '_blank');
+  };
+
+  const createInviteLink = async () => {
+    reactSwal.fire({
+      title: 'Creating Meeting',
+      html: (
+        <>
+          Awaiting transaction completion
+          <div className="wait-minting-token">
+          </div>
+        </>
+      ),
+      icon: 'info',
+      showConfirmButton: false
+    });
+    const response = await axios.post(
+      '/api/meetings/me'
+    )
+
+    if (response.data.success) {
+      reactSwal.fire({
+        title: 'Meeting Created',
+        html: (
+          <>
+            <div className="wait-minting-token">
+              <OvalButton
+                onclick={() => {
+                  goToExternalLink(response.data.join_url);
+                }}
+                backgroundColor={secondaryColor}
+                textColor={secondaryTextColor}
+              >Join Meeting</OvalButton>
+            </div>
+          </>
+        ),
+        icon: 'success',
+        showConfirmButton: false
+      });
+      setInviteLink(response.data.join_url);
+    }
+  };
+
+
   const checkAllSteps = useCallback(() => {
     if (!blockchain) {
       return <></>;
@@ -453,10 +501,9 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
         currentUserAddress?.toLowerCase()
       ) {
         return (
-          <SellInputButton
-            selectedToken={selectedToken}
-            refreshResaleData={getResaleData}
-          />
+          <OvalButton onclick={createInviteLink} backgroundColor={secondaryColor} textColor={secondaryTextColor}>
+            Create invite Link
+          </OvalButton>
         );
         // User is not owner and resale data exists
       } else {
@@ -539,7 +586,7 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
           )}
         </div>
       </div>
-      {currentCollection &&
+      {/* {currentCollection &&
         selectedToken &&
         tokenDataForResale &&
         currentCollection[selectedToken]?.isMinted &&
@@ -566,7 +613,7 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
             className="nft-item-sell-buton">
             <BillTransferIcon primaryColor={primaryColor} />
           </button>
-        )}
+        )} */}
       <div>{checkAllSteps()}</div>
     </div>
   );

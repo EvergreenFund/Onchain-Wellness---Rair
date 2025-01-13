@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Hero from '../Hero/Hero'
 import OvalButton from '../OvalButton/OvalButton'
 import { useAppSelector } from '../../hooks/useReduxHooks';
@@ -8,6 +8,11 @@ import Badge from '../Badge/Badge';
 import IndividualTherapyImage from '../../images/individualTherapyImage.png';
 import WorkshopsImage from '../../images/workshopImage.png';
 import ExternalLink from '../../images/ExternalLink';
+import Popup from 'reactjs-popup';
+import MintPopUpCollection from '../MockUpPage/NftList/NftData/TitleCollection/MintPopUpCollection/MintPopUpCollection';
+import { TOfferType } from '../marketplace/marketplace.types';
+import axios, { AxiosError } from 'axios';
+import { IOffersResponseType, TProducts } from '../../axios.responseTypes';
 
 const Home = () => {
   const {
@@ -16,6 +21,57 @@ const Home = () => {
     textColor,
     secondaryTextColor
   } = useAppSelector((store) => store.colors);
+  // const { contract, tokenId, blockchain } = useParams<TParamsTitleCollection>();
+  const contract = '0x4c72cfefc42acc019f6304598336a2e21da8a4ad'
+  const blockchain = '0x2105'
+  const [mintPopUp, setMintPopUp] = useState<boolean>(false);
+  const mockOffers: TOfferType[] = [ { contract: "0x1234567890abcdef", copies: 100, creationDate: "2025-01-10T14:19:00Z", diamond: true, offerIndex: "1", offerName: "Exclusive NFT Art", offerPool: "Art Pool", price: "2.5 ETH", product: "Digital Art", range: ["0x1", "0x2", "0x3"], sold: false, soldCopies: 0, transactionHash: "0xabcdef1234567890", _id: "offer1", diamondRangeIndex: "0x1", hidden: false, sponsored: true }, { contract: "0xabcdef1234567890", copies: 50, creationDate: "2025-01-09T10:00:00Z", diamond: false, offerIndex: "2", offerName: "Limited Edition NFT", offerPool: "Collectibles Pool", price: "1.0 ETH", product: "Collectible", range: ["0x4", "0x5"], sold: true, soldCopies: 50, transactionHash: "0x1234567890abcdef", _id: "offer2", hidden: false }, { contract: "0x7890abcdef123456", copies: 200, creationDate: "2025-01-08T08:30:00Z", diamond: true, offerIndex: "3", offerName: "Rare NFT Collection", offerPool: "Rare Pool", price: "5.0 ETH", product: "Digital Collectible", range: ["0x6", "0x7", "0x8", "0x9"], sold: false, soldCopies: 0, transactionHash: "0xabcdef7890123456", _id: "offer3", diamondRangeIndex: "0x6", hidden: true, sponsored: false } ];
+  const [purchaseStatus, setPurchaseStatus] = useState<boolean>(false);
+    const [collectionName, setCollectionName] = useState<string>();
+  const [offerPrice, setOfferPrice] = useState<string[] | undefined>([]);
+  const [offerData, setOfferData] = useState<TOfferType>();
+  const [offerDataInfo, setOfferDataInfo] = useState<TOfferType[]>();
+  const [ownerInfo, setOwnerInfo] = useState<TProducts>();
+  const [dataForUser, setDataForUser] = useState<TProducts>();
+  const [selectedOfferIndex, setSelectedOfferIndex] = useState<string>();
+
+    const getParticularOffer = useCallback(async () => {
+    try {
+      const response = await axios.get<IOffersResponseType>(
+        `/api/nft/network/${blockchain}/${contract}/${0}/offers`
+      );
+
+      if (response.data.success) {
+        setDataForUser(response.data.product);
+        setOfferData(
+          response.data.product.offers?.find((neededOfferIndex) => {
+            if (neededOfferIndex && neededOfferIndex.diamond) {
+              return neededOfferIndex.diamondRangeIndex === selectedOfferIndex;
+            } else {
+              return neededOfferIndex.offerIndex === selectedOfferIndex;
+            }
+          })
+        );
+
+        setOfferPrice(
+          response.data.product.offers?.map((p) => {
+            return p.price.toString();
+          })
+        );
+
+        setOwnerInfo(response.data.product);
+        setOfferDataInfo(response.data.product.offers);
+        setCollectionName(response.data.product.name);
+      }
+    } catch (err) {
+      const error = err as AxiosError;
+      console.error(error?.message);
+    }
+  }, [contract, selectedOfferIndex, blockchain]);
+
+    useEffect(() => {
+      getParticularOffer();
+    }, [getParticularOffer]);
 
   return (
     <div
@@ -26,6 +82,22 @@ const Home = () => {
       <section className='home-section hero'>
         <Hero />
       </section>
+      <Popup
+        className="popup-settings-block"
+        open={mintPopUp}
+        position="right center"
+        closeOnDocumentClick
+        onClose={() => {
+          setMintPopUp(false);
+        }}>
+          <MintPopUpCollection
+            blockchain={blockchain}
+            offerDataCol={offerDataInfo}
+            primaryColor={primaryColor}
+            contractAddress={contract}
+            setPurchaseStatus={setPurchaseStatus}
+          />
+      </Popup>
       <div
         className='wide-banner'
         style={{
@@ -80,7 +152,7 @@ const Home = () => {
               </ul>
             </div>
             <div className='plan-card-footer'>
-              <BlockButton onclick={() => {}} backgroundColor={secondaryColor} textColor={secondaryColor}>
+              <BlockButton onclick={() => setMintPopUp(true)} backgroundColor={secondaryColor} textColor={secondaryColor}>
                 <span style={{
                   display: 'flex',
                   justifyContent: 'space-between',
