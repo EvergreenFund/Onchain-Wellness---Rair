@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { vaporverse_background } from '../../components/SplashPage/images/vaporverse/vaporverse';
 import { TSplashDataType } from '../../components/SplashPage/splashPage.types';
 

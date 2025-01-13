@@ -207,7 +207,7 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
 
   return (
     <main ref={myRef} id="nft-data-page-wrapper">
-      {/* <BreadcrumbsView embeddedParams={embeddedParams} /> */}
+      <BreadcrumbsView embeddedParams={embeddedParams} />
       <div className={`collection-background single-token`}>
         <ImageLazy
           className="picture-banner"
@@ -220,11 +220,11 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
         />
       </div>
       <div>
-        {/* <TitleCollection
+        <TitleCollection
           title={selectedData?.name}
           someUsersData={someUsersData}
           userName={ownerInfo?.owner}
-        /> */}
+        />
         <div
           style={{
             position: 'relative'

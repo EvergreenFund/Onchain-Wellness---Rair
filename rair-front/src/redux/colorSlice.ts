@@ -5,9 +5,8 @@ import {
   headerLogoWhiteMobile,
   HotDropsLogo,
   HotDropsLogoLight,
-  HotDropsLogoMobile,
+  HotDropsLogoMobile
 } from '../images';
-import evergreenLogo from '../images/logo.svg'
 
 export const charcoal = '#222021';
 export const rhyno = '#dedede';
@@ -15,9 +14,6 @@ export const bubblegum = '#e882d5';
 export const royalPurple = '#725bdb';
 export const arcticBlue = '#19a7f6';
 export const hotdropsOrange = '#f95631';
-export const black = '#000';
-export const white = '#fff';
-export const blue = 'linear-gradient(90deg, #063CA9 0%, #0052FF 100%)';
 
 type CustomButtonColorData = Pick<
   ServerSettings,
@@ -47,7 +43,6 @@ interface ColorInfo {
   primaryColor?: string;
   secondaryColor?: string;
   textColor?: string;
-  secondaryTextColor?: string;
   iconColor?: string;
   headerLogo: string;
   headerLogoMobile: string;
@@ -67,12 +62,14 @@ const hotdropsVar = import.meta.env.VITE_TESTNET;
 
 const logos = {
   light: {
-    headerLogo: evergreenLogo,
-    headerLogoMobile: evergreenLogo
+    headerLogo: hotdropsVar === 'true' ? HotDropsLogoLight : headerLogoBlack,
+    headerLogoMobile:
+      hotdropsVar === 'true' ? HotDropsLogoMobile : headerLogoBlackMobile
   },
   dark: {
-    headerLogo: evergreenLogo,
-    headerLogoMobile: evergreenLogo
+    headerLogo: hotdropsVar === 'true' ? HotDropsLogo : headerLogoWhite,
+    headerLogoMobile:
+      hotdropsVar === 'true' ? HotDropsLogoMobile : headerLogoWhiteMobile
   }
 };
 
@@ -88,24 +85,22 @@ const buttons: ButtonInfo = {
 
 const colorThemes: ColorLibrary = {
   light: {
-    primaryColor: black,
-    secondaryColor: blue,
-    headerLogo: evergreenLogo,
-    headerLogoMobile: headerLogoWhiteMobile,
-    textColor: '#ffffff88',
-    secondaryTextColor: '#fafafa',
+    primaryColor: rhyno,
+    secondaryColor: charcoal,
+    headerLogo: headerLogoBlack,
+    headerLogoMobile: headerLogoBlackMobile,
+    textColor: 'black',
     backgroundImage: bgLogoWhite,
-    backgroundImageEffect: { backgroundBlendMode: 'lighten' },
+    backgroundImageEffect: { backgroundBlendMode: undefined },
     iconColor: bubblegum
   },
   dark: {
-    primaryColor: black,
-    secondaryColor: blue,
-    headerLogo: evergreenLogo,
+    primaryColor: charcoal,
+    secondaryColor: rhyno,
+    headerLogo: headerLogoWhite,
     headerLogoMobile: headerLogoWhiteMobile,
-    textColor: '#ffffff88',
-    secondaryTextColor: '#fafafa',
-    backgroundImage: bgLogoWhite,
+    textColor: 'white',
+    backgroundImage: bgLogoBlack,
     backgroundImageEffect: { backgroundBlendMode: 'lighten' },
     iconColor: bubblegum
   },
@@ -115,7 +110,6 @@ const colorThemes: ColorLibrary = {
     headerLogo: '',
     headerLogoMobile: '',
     textColor: '',
-    secondaryTextColor: '#ffffff88',
     backgroundImage: '',
     backgroundImageEffect: {},
     iconColor: hotdropsOrange

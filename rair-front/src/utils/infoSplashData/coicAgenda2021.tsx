@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { TSplashDataType } from '../../components/SplashPage/splashPage.types';
 import { hyperlink } from '../../components/SplashPage/SplashPageConfig/utils/hyperLink';
 

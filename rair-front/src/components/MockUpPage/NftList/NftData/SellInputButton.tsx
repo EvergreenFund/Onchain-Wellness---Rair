@@ -25,7 +25,7 @@ const SellInputButton: FC<ISellInputButton> = ({
 
   return (
     <div className="nft-data-sell-button">
-      {/* {isInputPriceExist && (
+      {isInputPriceExist && (
         <div className="input-sell-container">
           <InputField
             type="eth"
@@ -46,7 +46,7 @@ const SellInputButton: FC<ISellInputButton> = ({
             onClick={handleInputClear}
           />
         </div>
-      )} */}
+      )}
       <SellButton
         singleTokenPage={true}
         selectedToken={selectedToken}
