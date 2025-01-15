@@ -1,7 +1,7 @@
 import { FC } from "react"
 import "./OvalButton.css"
 
-interface IOvalButton {
+interface IOvalButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     onclick: () => void;
     backgroundColor?: string;
     borderColor?: string;
@@ -15,6 +15,7 @@ const OvalButton: FC<IOvalButton> = ({
     borderColor,
     textColor,
     children,
+    ...props
 }) => {
     return (
         <button
@@ -26,6 +27,7 @@ const OvalButton: FC<IOvalButton> = ({
                 borderColor,
                 color: textColor,
             }} 
+            {...props}
         >
             {children}
         </button>

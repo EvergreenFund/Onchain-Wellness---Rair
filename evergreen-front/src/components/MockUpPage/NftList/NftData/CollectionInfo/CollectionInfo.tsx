@@ -134,7 +134,7 @@ const EasyMintRow = ({
                   .then((result) => {
                     if (result.isConfirmed || result.isDismissed) {
                       navigate(
-                        `/tokens/${blockchain}/${params.contract}/${params.product}/${purchasedTokens}`
+                        `/tokens/${blockchain}/${import.meta.env.VITE_NFT_CONTRACT_ADDRESS}/${0}/${purchasedTokens}`
                       );
                     }
                   });
@@ -202,7 +202,12 @@ const CollectionInfo: FC<ICollectionInfo> = ({
         {mintToken && width < 1025 ? (
           <></>
         ) : (
-          <div className="collection-info-title">
+          <div 
+            className="collection-info-title"
+            style={{
+              background: primaryColor
+            }}
+          >
             <div className="collection-part-text">Item name</div>
             {!mintToken && <div className="collection-part-text">Rank</div>}
             <div className="collection-part-text">Availability</div>

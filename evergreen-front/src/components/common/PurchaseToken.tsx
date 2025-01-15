@@ -23,6 +23,7 @@ import {
   IPurchaseTokenButtonProps,
   IRangeDataType
 } from './commonTypes/PurchaseTokenTypes.types';
+import OvalButton from '../OvalButton/OvalButton';
 
 const queryRangeDataFromDatabase = async (
   contractInstance: Contract | undefined,
@@ -339,7 +340,7 @@ const Agreements: React.FC<IAgreementsPropsType> = ({
       </div>
       <div className="w-100">{presaleMessage}</div>
       <div className="w-100">
-        <button
+        <OvalButton
           disabled={
             buyingToken ||
             Boolean(
@@ -348,12 +349,12 @@ const Agreements: React.FC<IAgreementsPropsType> = ({
                 (!privacyPolicy || !termsOfUse)
             )
           }
-          className="col-12 col-sm-8 col-md-4 rounded-rair my-4 btn rair-button"
-          style={{
-            background: primaryButtonColor,
-            color: textColor
-          }}
-          onClick={async () => {
+          // className="col-12 col-sm-8 col-md-4 rounded-rair my-4 btn rair-button"
+          // style={{
+          //   background: primaryButtonColor,
+          //   color: textColor
+          // }}
+          onclick={async () => {
             if (!requiredBlockchain) {
               return;
             }
@@ -524,7 +525,7 @@ const Agreements: React.FC<IAgreementsPropsType> = ({
                 }`
               : buttonMessage || 'Purchase'
             : 'Connect your wallet!'}
-        </button>
+        </OvalButton>
       </div>
       {buyingToken && (
         <div className="wait-minting-token">
@@ -603,42 +604,12 @@ const PurchaseTokenButton: React.FC<IPurchaseTokenButtonProps> = ({
     });
   };
 
-  if (altButtonFormat) {
-    return (
-      <button
-        className={customButtonClassName}
-        onClick={handleClick ? handleClick : fireAgreementModal}>
-        <div style={{ color: textColor }} className={customButtonTextClassName}>
-          {' '}
-          {buttonLabel}{' '}
-        </div>
-      </button>
-    );
-  } else {
-    return (
-      <div className={customWrapperClassName}>
-        <button
-          style={{
-            background: `${
-              primaryColor === '#dedede'
-                ? import.meta.env.VITE_TESTNET === 'true'
-                  ? 'var(--hot-drops)'
-                  : 'linear-gradient(to right, #e882d5, #725bdb)'
-                : import.meta.env.VITE_TESTNET === 'true'
-                  ? primaryButtonColor ===
-                    'linear-gradient(to right, #e882d5, #725bdb)'
-                    ? 'var(--hot-drops)'
-                    : primaryButtonColor
-                  : primaryButtonColor
-            }`
-          }}
-          onClick={handleClick ? handleClick : fireAgreementModal}>
-          {buttonLabel}
-        </button>
-      </div>
-    );
-  }
-  // }
+  return (
+      <OvalButton
+        onclick={handleClick ? handleClick : fireAgreementModal}>
+        {buttonLabel}
+      </OvalButton>
+  );
 };
 
 export default PurchaseTokenButton;

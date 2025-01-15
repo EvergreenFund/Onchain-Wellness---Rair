@@ -114,14 +114,7 @@
 }
 
 .wrapper-collection-info.mint .collection-mint-button button {
-  background: var(--stimorol);
-  border-radius: 12px;
-  color: #fff;
-  border: none;
-  padding: 5px 15px;
   margin-right: 15px;
-  transition: all 0.3s ease;
-  outline: none;
 }
 
 .item-multi-mint select {
@@ -137,12 +130,12 @@
 
 .wrapper-collection-info.mint .collection-mint-button button:disabled,
 .wrapper-collection-info.mint .collection-mint-button button:disabled:hover {
-  background: var(--stimorol-click);
+  /* background: var(--stimorol-click); */
   cursor: not-allowed;
 }
 
 .wrapper-collection-info.mint .collection-mint-button button:hover {
-  background: var(--stimorol-hover);
+  filter: brightness(2.0);
 }
 
 @media screen and (max-width: 1024px) {
