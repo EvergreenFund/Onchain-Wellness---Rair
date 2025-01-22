@@ -1,8 +1,9 @@
 const express = require('express');
-const { zoomTokenCheck } = require('../../middleware');
+const { zoomTokenCheck, loadUserSession } = require('../../middleware');
 const {
   getMeeting,
   createMeeting,
+  createMeetingUnlock,
   updateMeeting,
   deleteMeeting,
   getMeetingParticipantReport,
@@ -21,6 +22,12 @@ router.get(
   '/:meetingId',
   getMeeting,
 );
+
+router.post(
+  '/create',
+  loadUserSession,
+  createMeetingUnlock,
+)
 
 /**
  * Create a meeting

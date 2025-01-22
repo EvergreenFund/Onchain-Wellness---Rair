@@ -94,7 +94,7 @@ module.exports = {
       }
 
       if (foundUser) {
-        matchData.uploader = userAddress;
+        matchData.uploader = userAddress.toLowerCase();
       }
 
       if (mediaTitle !== '') {
