@@ -233,6 +233,10 @@ const MainHeader: FC<IMainHeader> = ({
             )}
           </div>
         )}
+        <UserProfileSettings
+          showAlert={showAlert}
+          setTabIndexItems={setTabIndexItems}
+        />
         <div className="box-connect-btn">
           <div className="social-media">
             {currentUserAddress && (

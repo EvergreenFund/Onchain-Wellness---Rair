@@ -36,6 +36,7 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
   selectedToken,
   setSelectedToken,
   offerData,
+  product,
   tokenDataForResale,
   serialNumberData
 }) => {
@@ -309,6 +310,68 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
     window.open(link, '_blank');
   };
 
+  const getMeetingDetails = useCallback(async () => {
+    if(product && !inviteLink) {
+      reactSwal.fire({
+        title: 'Geeting Meeting details',
+        html: (
+          <>
+            <div className="wait-minting-token">
+            </div>
+          </>
+        ),
+        icon: 'info',
+        showConfirmButton: false
+      });
+      try {
+        const response = await axios.get(`/api/meetings/${product.meetingId}`)
+        if (response.data.success) {
+          reactSwal.fire({
+            title: 'Meeting found',
+            html: (
+              <>
+                <div className="wait-minting-token">
+                  <OvalButton
+                    onclick={() => {
+                      goToExternalLink(response.data.join_url);
+                    }}
+                    backgroundColor={secondaryColor}
+                    textColor={secondaryTextColor}
+                  >Join Meeting</OvalButton>
+                </div>
+              </>
+            ),
+            // icon: 'success',
+            showConfirmButton: false
+          });
+          setInviteLink(response.data.join_url);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (inviteLink) {
+        reactSwal.fire({
+          title: 'Meeting found',
+          html: (
+            <>
+              <div className="wait-minting-token">
+                <OvalButton
+                  onclick={() => {
+                    goToExternalLink(inviteLink);
+                  }}
+                  backgroundColor={secondaryColor}
+                  textColor={secondaryTextColor}
+                >Join Meeting</OvalButton>
+              </div>
+            </>
+          ),
+          // icon: 'success',
+          showConfirmButton: false
+        });
+
+    }
+  }, [product]);
+
   const createInviteLink = async () => {
     reactSwal.fire({
       title: 'Creating Meeting',
@@ -501,7 +564,11 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
         currentUserAddress?.toLowerCase()
       ) {
         return (
-          <OvalButton onclick={createInviteLink} backgroundColor={secondaryColor} textColor={secondaryTextColor}>
+          product 
+          ? <OvalButton onclick={getMeetingDetails} backgroundColor={secondaryColor} textColor={secondaryTextColor}>
+            Get invite Link
+          </OvalButton>
+          : <OvalButton onclick={createInviteLink} backgroundColor={secondaryColor} textColor={secondaryTextColor}>
             Create invite Link
           </OvalButton>
         );

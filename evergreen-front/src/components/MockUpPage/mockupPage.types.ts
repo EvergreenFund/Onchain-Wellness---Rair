@@ -115,6 +115,7 @@ export interface ISerialNumberBuySell {
   offerData: TOfferType | undefined;
   tokenDataForResale?: NftItemToken | CollectionTokens;
   serialNumberData: Array<tokenNumberData>;
+  product?: CatalogVideoItem
 }
 export interface ISellButton {
   currentUser?: string | undefined;
@@ -188,6 +189,7 @@ export interface INftDataPageMain {
   setSelectedToken: (tokenId: string | undefined) => void;
   offerData?: TOfferType | undefined;
   offerDataInfo: TOfferType[] | undefined;
+  meetingDetails?: any;
   offerPrice?: string[];
   someUsersData: User | null | undefined;
   ownerInfo?: TProducts | undefined;

@@ -25,17 +25,6 @@ const UserProfileSettings = ({ showAlert, setTabIndexItems }) => {
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-        <TooltipBox position={'bottom'} title="Switch Theme">
-          <SocialBox
-            className="social-sun-icon"
-            primaryColor={primaryColor}
-            marginRight={'17px'}
-            onClick={() => {
-              dispatch(setColorScheme(isDarkMode ? 'light' : 'dark'));
-            }}>
-            <SunIcon />
-          </SocialBox>
-        </TooltipBox>
         {isLoggedIn && (
           <div
             style={{

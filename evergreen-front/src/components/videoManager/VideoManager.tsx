@@ -68,8 +68,11 @@ const VideoManager = () => {
   }, [selectedFile, refresh]);
 
   const refreshFileList = useCallback(async () => {
+    if(!currentUserAddress) {
+      return;
+    }
     const { success, list } = await rFetch(
-      `/api/files/list?hidden=${hiddenFlag}`
+      `/api/files/list?hidden=${hiddenFlag}&userAddress=${currentUserAddress ?? ''}`
     );
     if (success) {
       setUploads(Object.keys(list).map((key) => list[key]));

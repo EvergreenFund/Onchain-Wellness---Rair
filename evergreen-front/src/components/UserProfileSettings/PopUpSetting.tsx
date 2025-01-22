@@ -179,21 +179,6 @@ const PopUpSettings = ({ showAlert, setTabIndexItems }) => {
           className={`profile-buy-button ${!isDarkMode ? "rhyno" : ""}`}
         ></div>
         <div
-          onClick={() => setUserBalanceTrigger((prev) => !prev)}
-          className={`profile-user-balance ${!isDarkMode ? "rhyno" : ""}`}
-        >
-          <img
-            style={{
-              marginRight: "5px",
-            }}
-            src={!isDarkMode ? RairFavicon : RairTokenLogo}
-            alt="logo"
-          />
-          {getBlockchainData(connectedChain) && (
-            <img src={getBlockchainData(connectedChain)?.image} alt="logo" />
-          )}
-        </div>
-        <div
           onClick={() => setTriggerState((prev) => !prev)}
           className="profile-btn-img"
           style={{
@@ -259,17 +244,6 @@ const PopUpSettings = ({ showAlert, setTabIndexItems }) => {
           >
             {cutUserAddress()}
           </span>
-          <FontAwesomeIcon
-            icon={faBars}
-            className="icon-menu"
-            style={{
-              color:
-                import.meta.env.VITE_TESTNET === "true"
-                  ? `${iconColor === "#1486c5" ? "#F95631" : iconColor}`
-                  : `${iconColor === "#1486c5" ? "#E882D5" : iconColor}`,
-              WebkitBackgroundClip: "text",
-            }}
-          />
         </div>
       </button>
       <Popup

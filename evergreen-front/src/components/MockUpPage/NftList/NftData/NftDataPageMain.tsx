@@ -48,6 +48,8 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
 }) => {
   const { currentCollection } = useAppSelector((state) => state.tokens);
   const { tokenId } = useParams();
+  const { currentUserAddress } = useAppSelector((store) => store.web3);
+  const userProducts = productsFromOffer?.filter((item) => item.uploader === currentUserAddress );
 
   const [selectVideo, setSelectVideo] = useState<
     CatalogVideoItem | undefined
@@ -68,12 +70,6 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
   const { primaryColor, isDarkMode } = useAppSelector((store) => store.colors);
 
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (productsFromOffer) {
-      setSelectVideo(productsFromOffer[0]);
-    }
-  }, [setSelectVideo, productsFromOffer]);
 
   const checkUrl = useCallback(() => {
     if (selectedData && selectedData.animation_url) {
@@ -348,6 +344,7 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
             offerData={offerData}
             selectedToken={selectedToken}
             tokenDataForResale={currentCollection?.[tokenId]}
+            product={userProducts ? userProducts[0] : undefined}
           />
           <div className="properties-title">
             <TitleSingleTokenView title="Description" isDarkMode={isDarkMode} />
@@ -380,40 +377,6 @@ const NftDataPageMain: React.FC<INftDataPageMain> = ({
             </div>
           )}
         </div>
-        <div className="this-nft-unlocks">
-          <TitleSingleTokenView
-            title={`This ${hotdropsVar ? 'collectible' : 'NFT'} unlocks`}
-            isDarkMode={isDarkMode}
-          />
-        </div>
-        {productsFromOffer && productsFromOffer.length > 0 ? (
-          <>
-            <div
-              className="nft-collection nft-collection-video-wrapper"
-              style={{
-                backgroundColor: `${
-                  primaryColor === '#dedede'
-                    ? 'var(--rhyno-40)'
-                    : `color-mix(in srgb, ${primaryColor} 40%, #888888)`
-                }`
-              }}>
-              <UnlockableVideosSingleTokenPage
-                selectVideo={selectVideo}
-                setSelectVideo={setSelectVideo}
-                productsFromOffer={productsFromOffer}
-                openVideoplayer={openVideoplayer}
-                setOpenVideoPlayer={setOpenVideoPlayer}
-                handlePlayerClick={handlePlayerClick}
-              />
-            </div>
-          </>
-        ) : productsFromOffer === undefined ? (
-          <LoadingComponent />
-        ) : (
-          <div className="description-text">{`This ${
-            hotdropsVar ? 'collectible' : 'NFT'
-          } doesn't have any unlockable videos.`}</div>
-        )}
       </div>
     </main>
   );

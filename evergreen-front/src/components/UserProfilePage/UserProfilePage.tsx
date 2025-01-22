@@ -313,32 +313,11 @@ const UserProfilePage: React.FC = () => {
 
   return (
     <div className={`${width > 1025 ? "container" : "wrapper-user-page"}`}>
-      <div>
-        <SharePopUp
-          selectedValue={selectedValue}
-          open={open}
-          onClose={handleClose}
-        />
-      </div>
       {userData ? (
         <>
           <div className="breadcrumbs">
-            <Stack
-              style={{ marginBottom: "2rem", paddingLeft: "0.5rem" }}
-              spacing={2}
-            >
-              <Breadcrumbs
-                color="white"
-                separator={
-                  <FontAwesomeIcon icon={faGreaterThan} fontSize="x-small" />
-                }
-                aria-label="breadcrumb"
-              >
-                {breadcrumbs}
-              </Breadcrumbs>
-            </Stack>
           </div>
-          <div
+          {/* <div
             className={`user-page-background ${
               primaryColor === "#dedede" ? "rhyno" : "charcoal"
             } ${
@@ -360,7 +339,7 @@ const UserProfilePage: React.FC = () => {
                 )}
               </>
             )}
-            {currentUserAddress &&
+            {/* {currentUserAddress &&
               currentUserAddress &&
               currentUserAddress === userAddress && (
                 <div
@@ -380,8 +359,7 @@ const UserProfilePage: React.FC = () => {
                     />
                   </label>
                 </div>
-              )}
-          </div>
+              )} */}
           <div
             className={`my-items-header-wrapper user ${
               currentUserAddress === userAddress && "edit"
@@ -441,9 +419,9 @@ const UserProfilePage: React.FC = () => {
                 </div>
               </div>
             )}
-            {!editMode && (
+            {/* {!editMode && (
               <CustomShareButton title="Share" handleClick={handleClickOpen} />
-            )}
+            )} */}
           </div>
 
           <div className="tabs-section">
@@ -454,7 +432,8 @@ const UserProfilePage: React.FC = () => {
               <TabList className="category-wrapper userpage">
                 <Tab
                   selectedClassName={`search-tab-selected-${
-                    primaryColor === "#dedede" ? "default" : "dark"
+                    // primaryColor === "#dedede" ? "default" : "dark"
+                    'dark'
                   }`}
                   style={{
                     backgroundColor: `${
@@ -467,62 +446,6 @@ const UserProfilePage: React.FC = () => {
                   className="category-button-nft category-button"
                 >
                   Collected
-                </Tab>
-                <Tab
-                  selectedClassName={`search-tab-selected-${
-                    primaryColor === "#dedede" ? "default" : "dark"
-                  }`}
-                  style={{
-                    backgroundColor: `${
-                      primaryColor === "#dedede" ? "#fafafa" : "#222021"
-                    }`,
-                    border: `1px solid ${
-                      primaryColor === "#dedede" ? "var(--rhyno)" : "#4E4D4D"
-                    }`,
-                  }}
-                  className="category-button-videos category-button"
-                >
-                  {width > 676 ? "Created" : "Created"}
-                </Tab>
-                <Tab
-                  selectedClassName={`search-tab-selected-${
-                    primaryColor === "#dedede" ? "default" : "dark"
-                  }`}
-                  style={{
-                    backgroundColor: `${
-                      primaryColor === "#dedede" ? "#fafafa" : "#222021"
-                    }`,
-                    border: `1px solid ${
-                      primaryColor === "#dedede" ? "var(--rhyno)" : "#4E4D4D"
-                    }`,
-                  }}
-                  className="category-button-videos category-button"
-                >
-                  {width > 676 ? (
-                    "Favorited"
-                  ) : (
-                    <FontAwesomeIcon icon={faHeart} />
-                  )}
-                </Tab>
-                <Tab
-                  selectedClassName={`search-tab-selected-${
-                    primaryColor === "#dedede" ? "default" : "dark"
-                  }`}
-                  style={{
-                    backgroundColor: `${
-                      primaryColor === "#dedede" ? "#fafafa" : "#222021"
-                    }`,
-                    border: `1px solid ${
-                      primaryColor === "#dedede" ? "var(--rhyno)" : "#4E4D4D"
-                    }`,
-                  }}
-                  className="category-button-videos category-button"
-                >
-                  {width > 676 ? (
-                    "Videos"
-                  ) : (
-                    <VideoIcon primaryColor={primaryColor} />
-                  )}
                 </Tab>
               </TabList>
               <div className="bar-wrapper">
