@@ -7,6 +7,7 @@ interface IBlockButton {
     borderColor?: string;
     textColor?: string;
     children: React.ReactNode;
+    disabled?: boolean;
 }
 
 const BlockButton: FC<IBlockButton> = ({
@@ -14,12 +15,14 @@ const BlockButton: FC<IBlockButton> = ({
     backgroundColor,
     borderColor,
     textColor,
+    disabled,
     children,
 }) => {
     return (
         <button
             type="button"
             className="block-button"
+            disabled={disabled}
             onClick={onclick}
             style={{
                 background: backgroundColor,

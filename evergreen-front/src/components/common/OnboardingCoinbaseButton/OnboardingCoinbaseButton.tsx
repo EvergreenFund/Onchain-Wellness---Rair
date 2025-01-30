@@ -3,17 +3,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import { Maybe } from '@metamask/providers/dist/utils';
 
-import { metaMaskIcon } from '../../../images';
+import { coinbaseIcon } from '../../../images';
 
-import './OnboardingButton.css';
+import './OnboardingCoinbaseButton.css';
 import { useAppSelector } from '../../../hooks/useReduxHooks';
 import BlockButton from '../../BlockButton/BlockButton';
 
-const ONBOARD_TEXT = 'Click here to install MetaMask! ';
+const ONBOARD_TEXT = 'Click here to install MetaMask!';
 const CONNECT_TEXT = 'Connect Wallet';
 const CONNECTED_TEXT = 'Connected';
 
-export function OnboardingButton() {
+export function OnboardingCoinbaseButton() {
   const [buttonText, setButtonText] = useState<string>(ONBOARD_TEXT);
   const [isDisabled, setDisabled] = useState<boolean>(false);
   const [accounts, setAccounts] = useState<Maybe<unknown>>([]);
@@ -21,7 +21,7 @@ export function OnboardingButton() {
   const onboarding = useRef<MetaMaskOnboarding>();
 
   const dappUrl = window.location.host;
-  const metamaskAppDeepLink = 'https://metamask.app.link/dapp/' + dappUrl;
+  const CoinbaseAppDeepLink = 'https://www.coinbase.com/wallet/downloads';
   const hotDropsVar = import.meta.env.VITE_TESTNET;
 
   const isMobileDevice = useCallback(() => {
@@ -80,21 +80,12 @@ export function OnboardingButton() {
       onboarding?.current?.startOnboarding();
     }
   };
-  return showButtonPhone ? (
-    <a target={'_blank'} href={metamaskAppDeepLink} rel="noreferrer">
-      <BlockButton
-        onclick={()=>{}}
-        >
-        Install Metamask 
-        {hotDropsVar !== 'true' && <img src={metaMaskIcon}></img>}
+  return (
+    <a target={'_blank'} href={CoinbaseAppDeepLink} rel="noreferrer">
+      <BlockButton onclick={()=>{}}>
+        Install Coinbase
+        {hotDropsVar !== 'true' && <img width={showButtonPhone ? 48 : 24} src={coinbaseIcon}></img>}
       </BlockButton>
     </a>
-  ) : (
-    <BlockButton
-      disabled={isDisabled}
-      onclick={onClick}>
-      {buttonText}
-      {hotDropsVar !== 'true' && <img width={showButtonPhone ? 48 : 24} src={metaMaskIcon}></img>}
-    </BlockButton>
-  );
+  )
 }
