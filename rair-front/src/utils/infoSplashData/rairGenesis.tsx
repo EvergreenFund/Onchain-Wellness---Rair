@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { Hex } from 'viem';
 
 import { Genesis_TV } from '../../components/SplashPage/images/rairGenesis/rairGenesis';

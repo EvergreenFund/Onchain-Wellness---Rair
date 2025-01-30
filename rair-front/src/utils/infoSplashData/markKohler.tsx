@@ -1,4 +1,3 @@
-//@ts-nocheck
 import Swal from 'sweetalert2';
 
 import { MarkKohlerImage } from '../../components/SplashPage/images/markKohler/markHohler';
