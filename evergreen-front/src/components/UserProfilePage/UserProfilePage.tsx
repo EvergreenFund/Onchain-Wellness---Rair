@@ -234,15 +234,15 @@ const UserProfilePage: React.FC = () => {
     [rSwal]
   );
 
-  useEffect(() => {
-    if (userAddress) {
-      dispatch(
-        loadVideoList({
-          userAddress,
-        })
-      );
-    }
-  }, [dispatch, userAddress]);
+  // useEffect(() => {
+  //   if (userAddress) {
+  //     dispatch(
+  //       loadVideoList({
+  //         userAddress,
+  //       })
+  //     );
+  //   }
+  // }, [dispatch, userAddress]);
 
   const tableData1 = [
     {

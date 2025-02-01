@@ -110,7 +110,7 @@ const useContracts = () => {
     }
     switch (loginType) {
       case 'metamask':
-        if (!ethereum.isConnected()) {
+        if (!ethereum?.isConnected()) {
           return;
         }
         const metamaskProvider = new BrowserProvider(ethereum);

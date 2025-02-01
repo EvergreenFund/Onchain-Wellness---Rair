@@ -9,15 +9,15 @@ export enum WalletType {
 }
 
 export function getWalletProvider(type: WalletType = WalletType.Metamask) {
-  if (window.ethereum.providers && window.ethereum.providers.length > 0) {
-    const provider = window.ethereum.providers.find((provider) => {
+  if (window.ethereum?.providers && window.ethereum?.providers.length > 0) {
+    const provider = window.ethereum?.providers.find((provider) => {
       return provider[walletTypeMap[type]]
     })
     if (provider) {
       return provider
     }
   } else {
-    if (window.ethereum[walletTypeMap[type]]) {
+    if (window.ethereum && window.ethereum[walletTypeMap[type]]) {
       return window.ethereum
     }
   }
