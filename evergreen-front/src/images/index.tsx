@@ -19,7 +19,7 @@ import HotdropsFaviconDefault from "./Hotdrops-favicon.ico";
 import logoHotDropsLight from "./HotdropsLogoLight.png";
 import kigGif from "./kid.gif";
 import lennyGif from "./lenny.gif";
-import loadingFavicon from "./loading-favicon.svg";
+import loadingFavicon from "./favicon.png";
 import logoHotDrops from "./logo-hotdrops.png";
 import metamaskLogo from "./metamask_logo.webp";
 import coinbaseLogo from "./coinbase-wallet-logo.webp";
@@ -29,7 +29,7 @@ import oneOf from "./oneOf-logo.webp";
 import openSea from "./openSea-logo.webp";
 // import Icons
 import polygonMatic from "./polygon-matic.svg";
-import RairFaviconDefault from "./rair_favicon.ico";
+import RairFaviconDefault from "./favicon.png";
 import logoBlackMobile from "./RAIR-Tech-Logo-POWERED-BY-BLACK-2021.webp";
 import logoWhiteMobile from "./RAIR-Tech-Logo-POWERED-BY-WHITE-2021.webp";
 import rairTechLogoBlue from "./rairLogo_blue.webp";
