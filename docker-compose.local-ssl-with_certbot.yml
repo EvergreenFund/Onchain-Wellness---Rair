@@ -206,10 +206,10 @@ services:
       - 6379:6379
     networks:
       - rair-local
-  rair-front:
-    container_name: rair-front
+  evergreen-front:
+    container_name: evergreen-front
     build:
-      context: rair-front
+      context: evergreen-front
       dockerfile: Dockerfile.prod
     environment:
       VITE_SENTRY_ENABLED: ${sentry_enabled}
@@ -224,7 +224,7 @@ services:
       VITE_MATIC_MAIN_DIAMOND_MARKETPLACE: ${matic_mainnet_diamond_marketplace_address}
       VITE_NODE_SOCKET_URI: ${front_socket_uri}
     volumes:
-      - ./rair-front/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./evergreen-front/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./data/certbot/conf:/etc/letsencrypt 
       - ./data/certbot/www:/var/www/certbot 
     ports:
