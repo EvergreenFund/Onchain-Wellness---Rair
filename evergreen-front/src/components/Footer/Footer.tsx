@@ -65,7 +65,7 @@ const Footer: FC<IFooter> = () => {
             }} src={headerLogo} alt="Evergreen Fund" />
           </NavLink>
         </FooterImage>
-        <div>
+        {/* <div>
         <h4>Contact Us</h4>
         <NavFooter className="footer-nav-hotdrops">
           <ul
@@ -82,7 +82,7 @@ const Footer: FC<IFooter> = () => {
             </li>
           </ul>
         </NavFooter>
-        </div>
+        </div> */}
       </FooterWrapper>
       <FooterTextRairTech textColor={textColor} primaryColor={primaryColor}>
         <ul>

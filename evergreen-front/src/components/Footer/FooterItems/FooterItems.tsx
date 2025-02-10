@@ -38,7 +38,7 @@ export const FooterWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
 })<TFooterMainStyled>`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   gap: 4rem;
   align-items: flex-start;
   padding-bottom: 52px;

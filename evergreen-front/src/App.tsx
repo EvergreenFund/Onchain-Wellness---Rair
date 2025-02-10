@@ -44,6 +44,7 @@ import ErrorFallback from "./views/ErrorFallback/ErrorFallback";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./components/Home/Home";
+import Landing from "./components/Landing/Landing";
 
 const SentryRoutes = withSentryReactRouterV6Routing(Routes);
 
@@ -85,6 +86,9 @@ function App() {
 
   const { pathname } = useLocation();
 
+  // Add this function to determine if header should be shown
+  const shouldShowHeader = pathname !== "/";
+
   const showAlertHandler = useCallback(() => {
     setShowAlert(
       !!(
@@ -106,7 +110,7 @@ function App() {
   useEffect(() => showAlertHandler(), [showAlertHandler]);
 
   const goHome = () => {
-    navigate("/");
+    navigate("/dapp-lo0m1pa2k");
     sessionStorage.removeItem("CategoryItems");
     sessionStorage.removeItem("BlockchainItems");
   };
@@ -198,7 +202,7 @@ function App() {
               },
             }}
           />
-          {/* {carousel && !isIframePage ? ( */}
+          {shouldShowHeader && (
             <MainHeader
               goHome={goHome}
               renderBtnConnect={renderBtnConnect}
@@ -210,9 +214,8 @@ function App() {
               isAboutPage={isAboutPage}
               setTokenNumber={setTokenNumber}
             />
-          {/*
-							Left sidebar, includes the RAIR logo and the admin sidebar
-						*/}
+          )}
+          {/* {carousel && !isIframePage ? ( */}
           {carousel ? (
             <div className="col-1 hidden-block">
               <div></div>
@@ -260,7 +263,11 @@ function App() {
                     */
                   {
                     path: "/",
-                    content: <Home  />,
+                    content: <Landing />,
+                  },
+                  {
+                    path: "/dapp-lo0m1pa2k",
+                    content: <Home />,
                   },
                   {
                     path: "/user/videos",
@@ -427,6 +434,16 @@ function App() {
               </SentryRoutes>
             </div>
           </MainBlockApp>
+          {/*
+							Left sidebar, includes the RAIR logo and the admin sidebar
+						*/}
+          {carousel ? (
+            <div className="col-1 hidden-block">
+              <div></div>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </AppContainerFluid>
       {!isIframePage && <Footer isSplashPage={isSplashPage} />}

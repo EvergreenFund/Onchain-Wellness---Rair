@@ -200,7 +200,7 @@ const MainHeader: FC<IMainHeader> = ({
           <li style={{
             color: pathname === '/' ? '#fff' : undefined,
           }}>
-            <Link to="/">Home</Link>
+            <Link to="/dapp-lo0m1pa2k">Home</Link>
           </li>
           <li
             style={{
