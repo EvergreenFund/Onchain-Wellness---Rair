@@ -17,7 +17,7 @@ interface IMenuMobileWrapper {
 
 export const MenuMobileWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   z-index: 50;
   position: fixed;
   width: 100%;
@@ -28,11 +28,8 @@ export const MenuMobileWrapper = styled.div.withConfig({
 
 export const Nav = styled.nav.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
-  background: ${(props) =>
-    props.primaryColor === '#dedede'
-      ? '#fff'
-      : `color-mix(in srgb, ${props.secondaryColor}, #888888)`};
+}) <IMenuMobileWrapper>`
+  background: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +46,7 @@ export const Nav = styled.nav.withConfig({
 
 export const ListItem = styled.li.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -59,7 +56,7 @@ export const ListItem = styled.li.withConfig({
   width: 100%;
   &:hover {
     background: ${(props) =>
-      props.primaryColor === '#dedede' ? 'rgb(211, 210, 211)' : '#383637'};
+    props.primaryColor === '#dedede' ? 'rgb(211, 210, 211)' : '#383637'};
   }
 
   .burger-menu-logout,
@@ -86,9 +83,9 @@ export const TitleEditProfile = styled.h4`
 
 export const List = styled.ul.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
 background: ${({ isDarkMode, secondaryColor }) =>
-!isDarkMode ? '#fff' : `color-mix(in srgb, ${secondaryColor}, #888888)`};
+    !isDarkMode ? '#000' : `color-mix(in srgb, ${secondaryColor}, #888888)`};
   
   overflow: ${(props) => props.click && 'hidden'};
   border-bottom-right-radius: 16px;
@@ -144,7 +141,7 @@ export const ListProfileLoading = styled.div`
 
 export const ListEditProfileMode = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   padding: 20px;
   height: 100%;
   background: ${(props) =>
@@ -267,7 +264,7 @@ export const RightSideMenu = styled.div`
 
 export const SearchInputMobile = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   position: relative;
   width: 100%;
   border-radius: 12px;
@@ -282,7 +279,7 @@ export const SearchInputMobile = styled.div.withConfig({
 
   i {
     color: ${(props) =>
-      props.hotdrops === 'true' ? 'var(--hot-drops)' : '#bd6bae'};
+    props.hotdrops === 'true' ? 'var(--hot-drops)' : '#bd6bae'};
     font-size: 18px;
     font-weight: 400;
   }
@@ -313,7 +310,7 @@ export const MobileEditFields = styled.div``;
 
 export const MobileProfileField = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
@@ -329,7 +326,7 @@ export const MobileProfileField = styled.div.withConfig({
       ${(props) => (props.errors && props.errors ? '#F63419' : '#19a7f6')};
     background: none;
     color: ${(props) =>
-      props.primaryColor === '#dedede' ? '#7A797A' : '#fff'};
+    props.primaryColor === '#dedede' ? '#7A797A' : '#fff'};
     padding: 8px 12px;
     border-radius: 12px;
     width: 80vw;
@@ -365,7 +362,7 @@ export const MobileProfileField = styled.div.withConfig({
 
 export const MobileProfileBtnWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<IMenuMobileWrapper>`
+}) <IMenuMobileWrapper>`
   display: flex;
   justify-content: space-between;
 
@@ -373,7 +370,7 @@ export const MobileProfileBtnWrapper = styled.div.withConfig({
     background: none;
     border: 1px solid #19a7f6;
     color: ${(props) =>
-      props.primaryColor === '#dedede' ? '#7A797A' : '#fff'};
+    props.primaryColor === '#dedede' ? '#7A797A' : '#fff'};
   }
 
   button:last-child:hover {

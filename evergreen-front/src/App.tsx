@@ -203,17 +203,33 @@ function App() {
             }}
           />
           {shouldShowHeader && (
-            <MainHeader
-              goHome={goHome}
-              renderBtnConnect={renderBtnConnect}
-              creatorViewsDisabled={creatorViewsDisabled}
-              showAlert={showAlert}
-              isSplashPage={isSplashPage}
-              realChainId={realNameChain && requestedChain}
-              setTabIndexItems={setTabIndexItems}
-              isAboutPage={isAboutPage}
-              setTokenNumber={setTokenNumber}
-            />
+            <>
+              {carousel && !isIframePage ? (
+                <MainHeader
+                  goHome={goHome}
+                  renderBtnConnect={renderBtnConnect}
+                  creatorViewsDisabled={creatorViewsDisabled}
+                  showAlert={showAlert}
+                  isSplashPage={isSplashPage}
+                  realChainId={realNameChain && requestedChain}
+                  setTabIndexItems={setTabIndexItems}
+                  isAboutPage={isAboutPage}
+                  setTokenNumber={setTokenNumber}
+                />
+              ) : (
+                !isIframePage && (
+                  <MenuNavigation
+                    realChainId={realNameChain && requestedChain}
+                    isSplashPage={isSplashPage}
+                    renderBtnConnect={renderBtnConnect}
+                    currentUserAddress={currentUserAddress}
+                    showAlert={showAlert}
+                    setTabIndexItems={setTabIndexItems}
+                    isAboutPage={isAboutPage}
+                  />
+                )
+              )}
+            </>
           )}
           {/* {carousel && !isIframePage ? ( */}
           {carousel ? (

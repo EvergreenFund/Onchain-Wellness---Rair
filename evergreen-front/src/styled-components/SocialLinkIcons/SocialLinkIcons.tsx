@@ -18,11 +18,10 @@ interface ISocialBox {
 
 export const SocialBox = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<ISocialBox>`
+}) <ISocialBox>`
   width: ${(props) => (props.width ? props.width : '32px')};
   height: ${(props) => (props.height ? props.height : '32px')};
   border-radius: 10.5px;
-  border: 1px solid
     ${(props) => (props.primaryColor === '#dedede' ? '#D0D0D0' : '#fff')};
 
   display: flex;
@@ -46,9 +45,9 @@ export const SocialBox = styled.div.withConfig({
 
   &.social-sun-icon {
     background: ${(props) =>
-      props.primaryColor === '#dedede' ? '#383637' : '#fff'};
+    props.primaryColor === '#dedede' ? '#383637' : '#fff'};
     border: ${(props) =>
-      props.primaryColor === '#dedede' ? '1px solid #E882D5' : 'none'};
+    props.primaryColor === '#dedede' ? '1px solid #E882D5' : 'none'};
   }
 
   &.social-bell-icon.notifications {
@@ -66,10 +65,6 @@ export const SocialBox = styled.div.withConfig({
 
   &.social-bell-icon {
     background: none;
-    border: ${(props) =>
-      props.primaryColor === '#dedede'
-        ? '1px solid #fff'
-        : '1px solid #D0D0D0'};
 
     .red-circle-notifications {
       display: none;
@@ -77,19 +72,19 @@ export const SocialBox = styled.div.withConfig({
 
     svg path {
       fill: ${(props) =>
-        props.notification
-          ? props.primaryColor === '#dedede'
-            ? '#383637'
-            : '#fff'
-          : 'none'};
+    props.notification
+      ? props.primaryColor === '#dedede'
+        ? '#383637'
+        : '#fff'
+      : 'none'};
     }
   }
 
   &.social-sun-icon:hover {
     border: ${(props) =>
-      props.primaryColor === '#dedede'
-        ? '1px solid #383637'
-        : '1px solid #E882D5'};
+    props.primaryColor === '#dedede'
+      ? '1px solid #383637'
+      : '1px solid #E882D5'};
 
     svg path {
       fill: none;
@@ -123,7 +118,7 @@ export const SocialBox = styled.div.withConfig({
 
 export const SocialBoxSearch = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<ISocialBox>`
+}) <ISocialBox>`
   width: 40px;
   height: 40px;
   border-radius: 10.5px;
@@ -148,7 +143,7 @@ export const SocialBoxSearch = styled.div.withConfig({
   &:hover {
     border: none;
     background: ${(props) =>
-      props.hotdrops === 'true' ? 'var(--hot-drops-hover)' : 'var(--stimorol)'};
+    props.hotdrops === 'true' ? 'var(--hot-drops-hover)' : 'var(--stimorol)'};
     i {
       color: #fff;
     }
@@ -156,9 +151,9 @@ export const SocialBoxSearch = styled.div.withConfig({
 
   i {
     color: ${(props) =>
-      props.activeSearch
-        ? '#fff'
-        : `${props.hotdrops === 'true' ? 'var(--hot-drops)' : '#bd6bae'}`};
+    props.activeSearch
+      ? '#fff'
+      : `${props.hotdrops === 'true' ? 'var(--hot-drops)' : '#bd6bae'}`};
     font-size: 18px;
     font-weight: 400;
     transition: all 0.3s ease;
@@ -172,7 +167,7 @@ export const SocialBoxSearch = styled.div.withConfig({
 
 export const UserIconMobile = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<ISocialBox>`
+}) <ISocialBox>`
   width: 40px;
   height: 40px;
   border-radius: 10.5px;
@@ -202,11 +197,8 @@ export const UserIconMobile = styled.div.withConfig({
 
 export const SocialMenuMobile = styled.div.withConfig({
   shouldForwardProp: (prop) => emotionIsPropValid(prop)
-})<ISocialBox>`
+}) <ISocialBox>`
   cursor: pointer;
-  background: ${(props) =>
-    props.primaryColor === '#dedede' ? '#fff' : '#424242'};
-  border: 1px solid #eaeaea;
   border-radius: 10px;
   width: 40px;
   height: 40px;

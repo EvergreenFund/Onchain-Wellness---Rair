@@ -40,6 +40,7 @@ import {
 
 import './Menu.css';
 import { fetchNotifications } from '../../redux/notificationsSlice';
+import OvalButton from '../OvalButton/OvalButton';
 
 interface IMenuNavigation {
   renderBtnConnect: boolean;
@@ -189,7 +190,7 @@ const MenuNavigation: React.FC<IMenuNavigation> = ({
 
   return (
     <MenuMobileWrapper
-      className="col-1 rounded burder-menu"
+      className="col-1 rounded burder-menu absolute top-0"
       showAlert={showAlert}
       secondaryColor={secondaryColor}
       isSplashPage={isSplashPage}
@@ -230,28 +231,15 @@ const MenuNavigation: React.FC<IMenuNavigation> = ({
               <div>
                 <div>
                   {isAboutPage ? null : (
-                    <button
-                      className={`btn rair-button btn-connect-wallet-mobile`}
-                      style={{
-                        background: `${
-                          primaryColor === '#dedede'
-                            ? import.meta.env.VITE_TESTNET === 'true'
-                              ? 'var(--hot-drops)'
-                              : 'linear-gradient(to right, #e882d5, #725bdb)'
-                            : import.meta.env.VITE_TESTNET === 'true'
-                              ? primaryButtonColor ===
-                                'linear-gradient(to right, #e882d5, #725bdb)'
-                                ? 'var(--hot-drops)'
-                                : primaryButtonColor
-                              : primaryButtonColor
-                        }`,
-                        color: textColor
-                      }}
-                      onClick={() => connectUserData()}>
-                      {loginStatus === dataStatuses.Loading
-                        ? 'Please wait...'
-                        : 'Connect'}
-                    </button>
+                    <span className='mx-2'>
+                      <OvalButton
+                        // className='mx-2'
+                        onclick={() => connectUserData()}>
+                        {loginStatus === dataStatuses.Loading
+                          ? 'Please wait...'
+                          : 'Connect'}
+                      </OvalButton>
+                    </span>
                   )}
                 </div>
               </div>
@@ -276,16 +264,14 @@ const MenuNavigation: React.FC<IMenuNavigation> = ({
                               style={{
                                 color:
                                   import.meta.env.VITE_TESTNET === 'true'
-                                    ? `${
-                                        iconColor === '#1486c5'
-                                          ? '#F95631'
-                                          : iconColor
-                                      }`
-                                    : `${
-                                        iconColor === '#1486c5'
-                                          ? '#E882D5'
-                                          : iconColor
-                                      }`
+                                    ? `${iconColor === '#1486c5'
+                                      ? '#F95631'
+                                      : iconColor
+                                    }`
+                                    : `${iconColor === '#1486c5'
+                                      ? '#E882D5'
+                                      : iconColor
+                                    }`
                               }}
                               aria-hidden="true"
                             />
@@ -346,41 +332,6 @@ const MenuNavigation: React.FC<IMenuNavigation> = ({
                       )}
                     </div>
                     <div
-                      onClick={() => {
-                        handleMessageAlert('profileEdit');
-                        toggleMenu('nav');
-                      }}
-                      className="mobileAikonWidget"
-                      style={{
-                        backgroundColor: !isDarkMode
-                          ? 'var(--rhyno-20)'
-                          : 'var(--charcoal-80)'
-                      }}>
-                      <div
-                        className={`profile-user-balance ${
-                          primaryColor === 'rhyno' ? 'rhyno' : ''
-                        }`}>
-                        <img
-                          style={{
-                            marginRight: '5px'
-                          }}
-                          src={
-                            primaryColor === '#dedede'
-                              ? RairFavicon
-                              : RairTokenLogo
-                          }
-                          alt="logo"
-                        />
-                        {connectedChain &&
-                          getBlockchainData(connectedChain) && (
-                            <img
-                              src={getBlockchainData(connectedChain)?.image}
-                              alt="logo"
-                            />
-                          )}
-                      </div>
-                    </div>
-                    <div
                       style={{
                         position: 'relative'
                       }}>
@@ -415,41 +366,23 @@ const MenuNavigation: React.FC<IMenuNavigation> = ({
               </div>
             )}
           </div>
-          {!isLoggedIn && (
-            <SocialBoxSearch
-              primaryColor={primaryColor}
-              hotdrops={hotdropsVar}
-              onClick={() => {
-                handleActiveSearch();
-                toggleMenu('nav');
-              }}
-              activeSearch={activeSearch}
-              marginRight={'17px'}>
-              <FontAwesomeIcon
-                icon={faSearch}
-                style={{
-                  color:
-                    import.meta.env.VITE_TESTNET === 'true'
-                      ? `${iconColor === '#1486c5' ? '#F95631' : iconColor}`
-                      : `${iconColor === '#1486c5' ? '#E882D5' : iconColor}`
-                }}
-              />
-            </SocialBoxSearch>
-          )}
-          {click ? (
-            <SocialMenuMobile primaryColor={primaryColor} onClick={toggleMenu}>
+
+          {isLoggedIn && (click ? (
+            <SocialMenuMobile
+              className='mt2'
+              onClick={toggleMenu}>
               <CloseIconMobile primaryColor={primaryColor} />
             </SocialMenuMobile>
           ) : (
             <SocialMenuMobile
-              primaryColor={primaryColor}
+              className='mt2'
               onClick={() => {
                 toggleMenu();
                 setOpenProfile(false);
               }}>
               <MenuIcon primaryColor={primaryColor} />
             </SocialMenuMobile>
-          )}
+          ))}
         </RightSideMenu>
       </Nav>
     </MenuMobileWrapper>

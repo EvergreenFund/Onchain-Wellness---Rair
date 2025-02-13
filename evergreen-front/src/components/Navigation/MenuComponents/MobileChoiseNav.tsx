@@ -34,82 +34,15 @@ const MobileChoiseNav: React.FC<IMobileChoiseNav> = ({
     (state) => state.user
   );
 
-  const {totalUnreadCount} = useAppSelector(store => store.notifications);
+  const { totalUnreadCount } = useAppSelector(store => store.notifications);
+  console.log({ headerLogoMobile })
 
   return (
     <div className="burder-menu-logo">
       {click ? (
-        <div className="social-media">
-          {(messageAlert && messageAlert === 'profile') ||
-          messageAlert === 'profileEdit' ? (
-            <div className="social-media-profile">
-              <UserIconMobile
-                onClick={() => handleMessageAlert('profile')}
-                avatar={avatar}
-                marginRight={'16px'}
-                messageAlert={messageAlert}
-                primaryColor={primaryColor}>
-                {isLoggedIn && !avatar && (
-                  <SvgUserIcon width={'22.5px'} height={'22.5px'} />
-                )}
-              </UserIconMobile>
-              <div>
-                {isLoggedIn && (
-                  <>
-                    {nickName && nickName.length > 13
-                      ? nickName.slice(0, 5) +
-                        '...' +
-                        nickName.slice(nickName.length - 4)
-                      : nickName}
-                  </>
-                )}
-              </div>
-            </div>
-          ) : messageAlert === 'notification' ? (
-            <div className="social-media-profile">
-              {currentUserAddress && (
-                <SocialBox
-                  className="social-bell-icon notifications"
-                  width="40px"
-                  height="40px"
-                  marginLeft={'17px'}>
-                  <BellIcon primaryColor={primaryColor} />
-                  {totalUnreadCount > 0 && (
-                    <div
-                      style={{
-                        fontSize: '10px',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        fontWeight: 'bold',
-                        color: '#fff'
-                      }}
-                      className="red-circle-notifications">
-                      {totalUnreadCount > 9 ? '9+' : totalUnreadCount}
-                    </div>
-                  )}
-                </SocialBox>
-              )}
-              <div className="social-media-user-icon">Notifications</div>
-            </div>
-          ) : (
-            <>
-              <SocialBox
-                className="social-sun-icon"
-                primaryColor={primaryColor}
-                marginRight={'17px'}
-                width={'40px'}
-                height={'40px'}
-                onClick={() => {
-                  dispatch(setColorScheme(isDarkMode ? 'light' : 'dark'));
-                }}>
-                <SunIcon />
-              </SocialBox>
-            </>
-          )}
-        </div>
+        <div> </div>
       ) : (
-        <NavLink to="/">
+        <NavLink to="/dapp-lo0m1pa2k">
           <img src={headerLogoMobile} alt="Rair Tech" />
         </NavLink>
       )}

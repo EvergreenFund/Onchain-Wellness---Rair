@@ -1,13 +1,12 @@
-
 .home {
     --custom-gradient: linear-gradient(90deg, #063CA9 0%, #0052FF 100%);
     font-size: 14px;
     background:
-    url(../../images/hero-bg-1.png),
+        url(../../images/hero-bg-1.png),
         url(../../images/hero-bg-2.png),
         url(../../images/hero-bg-3.png),
         url(../../images/hero-bg-3.png);
-    background-size:300px, 300px, 810px, 810px; 
+    background-size: 300px, 300px, 810px, 810px;
     background-position: -10% 500px, 105% 0%, -10% 315px, 128% 220px;
     background-repeat: no-repeat;
 }
@@ -23,9 +22,12 @@
     font-weight: 400;
 }
 
-.home p {
-    font-size: 1em;
+@media (min-width: 768px) {
+    .home p {
+        font-size: 1em;
+    }
 }
+
 
 
 
@@ -87,8 +89,8 @@
     width: 100%;
     min-height: 380px;
     border-radius: 16px;
-    background-color: rgba(255,255,255, 0.1); 
-    border: 1px solid rgba(255,255,255, 0.25);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .plan-card-footer {
@@ -115,12 +117,12 @@
 .individual-therapy-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: auto auto; 
+    grid-template-rows: auto auto;
     gap: 4rem;
     padding: 10px;
 }
 
-.individual-therapy-container > * {
+.individual-therapy-container>* {
     margin: auto;
 
 }
@@ -162,7 +164,7 @@
     margin-top: 4rem;
 }
 
-.workshops-container > * {
+.workshops-container>* {
     margin: auto;
 }
 
@@ -205,12 +207,13 @@
     background: url('../../images/bottom-arrow.svg') no-repeat;
     background-size: 15px;
 }
+
 @media (min-width: 1200px) {
     .workshops-container .step-item {
         flex-direction: row;
         /* justify-content: end; */
     }
-    
+
 }
 
 .workshops-container .step-item .step-number {
@@ -233,8 +236,8 @@
     max-width: 800px;
     border-radius: 20px;
     border-width: 7px;
-    border: 1px solid rgba(255,255,255, 0.35);
-    background-color: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.1);
     padding-inline: 2rem;
     padding-block: 1.5rem;
     margin-top: 3.0rem;
@@ -243,9 +246,10 @@
 .q-a-section .q-a-container details:first-child summary {
     padding-top: 0.5em;
 }
+
 .q-a-section .q-a-container details {
     /* color: white; */
-    border-bottom: 1px solid rgba(255,255,255, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .q-a-section .q-a-container summary {
