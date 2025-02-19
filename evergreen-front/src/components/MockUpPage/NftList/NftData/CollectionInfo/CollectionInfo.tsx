@@ -11,7 +11,7 @@ import {
   TNftItemResponse,
   TTokenData
 } from '../../../../../axios.responseTypes';
-import { useAppSelector } from '../../../../../hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/useReduxHooks';
 import useServerSettings from '../../../../../hooks/useServerSettings';
 import useSwal from '../../../../../hooks/useSwal';
 import useWindowDimensions from '../../../../../hooks/useWindowDimensions';
@@ -25,6 +25,7 @@ import { ICollectionInfo } from '../../nftList.types';
 import { ModalContentCloseBtn } from '../../../utils/button/ShowMoreItems';
 
 import './CollectionInfo.css';
+import { setRequestedChain } from '../../../../../redux/web3Slice';
 
 const EasyMintRow = ({
   token,
@@ -113,9 +114,8 @@ const EasyMintRow = ({
             <button disabled>Buy</button>
           ) : (
             <PurchaseTokenButton
-              customButtonClassName={`${
-                hotdropsVar === 'true' ? 'hotdrops-bg' : ''
-              }`}
+              customButtonClassName={`${hotdropsVar === 'true' ? 'hotdrops-bg' : ''
+                }`}
               amountOfTokensToPurchase={tokensToMint}
               contractAddress={contractAddress}
               requiredBlockchain={blockchain}
@@ -160,15 +160,15 @@ const CollectionInfo: FC<ICollectionInfo> = ({
   const params = useParams<TParamsNftItemForCollectionView>();
   const [tokenData, setTokenData] = useState<TTokenData[] | null>(null);
   const { width } = useWindowDimensions();
+  const dispatch = useAppDispatch();
 
   const hotdropsVar = import.meta.env.VITE_TESTNET;
 
   const defaultPhoto =
     hotdropsVar === 'true'
       ? defaultHotDrops
-      : `${
-          import.meta.env.VITE_IPFS_GATEWAY
-        }/QmNtfjBAPYEFxXiHmY5kcPh9huzkwquHBcn9ZJHGe7hfaW`;
+      : `${import.meta.env.VITE_IPFS_GATEWAY
+      }/QmNtfjBAPYEFxXiHmY5kcPh9huzkwquHBcn9ZJHGe7hfaW`;
 
   const getTokens = async () => {
     const { data } = await axios.get<TNftItemResponse>(
@@ -188,21 +188,26 @@ const CollectionInfo: FC<ICollectionInfo> = ({
   };
 
   useEffect(() => {
+    if (blockchain) {
+      dispatch(setRequestedChain(blockchain));
+    }
+  }, [blockchain, dispatch]);
+
+  useEffect(() => {
     getTokens();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div
-      className={`wrapper-collection-info ${mintToken ? 'mint' : ''} ${
-        primaryColor === '#dedede' ? 'rhyno' : ''
-      }`}>
+      className={`wrapper-collection-info ${mintToken ? 'mint' : ''} ${primaryColor === '#dedede' ? 'rhyno' : ''
+        }`}>
       {openTitle && <div className="collection-info-head">Collection Info</div>}
       <div className="contianer-collection-info">
         {mintToken && width < 1025 ? (
           <></>
         ) : (
-          <div 
+          <div
             className="collection-info-title"
             style={{
               background: primaryColor
