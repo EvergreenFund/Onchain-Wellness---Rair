@@ -5,7 +5,6 @@ import { IFooter } from './footer.types';
 
 import { useAppSelector } from '../../hooks/useReduxHooks';
 import useSwal from '../../hooks/useSwal';
-import './Footer.css'
 
 import {
   FooterImage,
@@ -15,9 +14,6 @@ import {
   NavFooter,
   NavFooterBox
 } from './FooterItems/FooterItems';
-import MailIcon from '../../images/MailIcon';
-import LocationIcon from '../../images/LocationIcon';
-import PhoneIcon from '../../images/PhoneIcon';
 
 const Footer: FC<IFooter> = () => {
   const [emailChimp, setEmailChimp] = useState<string>('');
@@ -51,38 +47,104 @@ const Footer: FC<IFooter> = () => {
       hotdrops={hotdropsVar}
       isDarkMode={isDarkMode}
       primaryColor={primaryColor}
-      textColor={'#fff'}
-      secondaryColor={'#000'}
-      >
+      textColor={textColor}
+      secondaryColor={secondaryColor}>
       <FooterWrapper
-        className="footer-wrappr-hotdrops"
+        className="footer-wrapper-hotdrops"
         primaryColor={primaryColor}>
-        <FooterImage>
+        <FooterImage className="footer-img-hotdrops">
           <NavLink to="/">
-            <img style={{
-              width: '150px',
-              height: 'auto'
-            }} src={headerLogo} alt="Evergreen Fund" />
+            <img src={headerLogo} alt="Rair Tech" />
           </NavLink>
         </FooterImage>
-        <div>
-        <h4>Contact Us</h4>
         <NavFooter className="footer-nav-hotdrops">
-          <ul
-            className="footer-nav-item"
-          >
-            <li>
-              <MailIcon width={20} height={20} />Development@EvergreenFund.life
-            </li>
-            <li>
-              <LocationIcon width={20} height={20} />14445 Mulholland Dr., Los Angeles, CA 90019
-            </li>
-            <li>
-              <PhoneIcon />818-530-6378
-            </li>
-          </ul>
+          <NavFooterBox
+            className="footer-nav-item-hotdrop"
+            primaryColor={primaryColor}>
+            {footerLinks && footerLinks.length > 0 ? (
+              footerLinks.map((el) => {
+                return (
+                  <li key={el.label}>
+                    <a target={'_blank'} rel="noreferrer" href={el.url}>
+                      {el.label}
+                    </a>
+                  </li>
+                );
+              })
+            ) : (
+              <>
+                {hotdropsVar === 'true' ? (
+                  <>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/terms-and-conditions"
+                        rel="noreferrer">
+                        Terms and Conditions
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/privacy-policy"
+                        rel="noreferrer">
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/faqs"
+                        rel="noreferrer">
+                        FAQs
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/hot-drops-content-removal-request"
+                        rel="noreferrer">
+                        Content Removal Request
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/hotties/recruiting"
+                        rel="noreferrer">
+                        Apply to Be a Creator
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://www.myhotdrops.com/usc2257"
+                        rel="noreferrer">
+                        USC 2257
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:customerservice@myhotdrops.com">
+                        Contact Us
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a
+                        target={'_blank'}
+                        href="https://etherscan.io/token/0x2b0ffbf00388f9078d5512256c43b983bb805ef8"
+                        rel="noreferrer">
+                        Contract
+                      </a>
+                    </li>
+                  </>
+                )}
+              </>
+            )}
+          </NavFooterBox>
         </NavFooter>
-        </div>
       </FooterWrapper>
       <FooterTextRairTech textColor={textColor} primaryColor={primaryColor}>
         <ul>
@@ -94,16 +156,16 @@ const Footer: FC<IFooter> = () => {
                 {import.meta.env.VITE_TESTNET === 'true'
                   ? ' HotDrops'
                   : ' Rairtech'}{' '}
-                {new Date().getFullYear()}. All rights reserved. Onchain Wellness
+                {new Date().getFullYear()}. All rights reserved
               </>
             )}
           </li>
-          {/* <li>
+          <li>
             <NavLink to="/privacy">Privacy policy</NavLink>
           </li>
           <li>
             <NavLink to="/terms-use">Terms of Service</NavLink>
-          </li> */}
+          </li>
         </ul>
       </FooterTextRairTech>
     </FooterMain>

@@ -1,11 +1,10 @@
-//@ts-nocheck
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-import { dataStatuses } from "./commonTypes";
+import { dataStatuses } from './commonTypes';
 
-import { User } from "../types/databaseTypes";
-import { rairSDK } from "../components/common/rairSDK";
+import { User } from '../types/databaseTypes';
 
 interface WithLoginData extends User {
   loginType?: string;
@@ -35,19 +34,19 @@ const initialState: UserState = {
   adminRights: undefined,
   superAdmin: undefined,
   ageVerified: undefined,
-  loginType: undefined,
+  loginType: undefined
 };
 
 export const loadCurrentUser = createAsyncThunk(
-  "user/loadCurrentUser",
+  'user/loadCurrentUser',
   async () => {
-    const response = await rairSDK?.auth.currentUser();
-    return response.user;
+    const response = await axios.get<UserDataResponse>('/api/auth/me');
+    return response.data.user;
   }
 );
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -76,7 +75,7 @@ export const userSlice = createSlice({
       .addCase(loadCurrentUser.rejected, (state) => {
         state.loginStatus = dataStatuses.Failed;
       });
-  },
+  }
 });
 
 //export const { setSEOInfo, resetSEOInfo } = userSlice.actions;

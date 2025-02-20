@@ -1,34 +1,33 @@
-//@ts-nocheck
-import React, { useCallback, useEffect, useState } from "react";
-import Dropzone from "react-dropzone";
+import React, { useCallback, useEffect, useState } from 'react';
+import Dropzone from 'react-dropzone';
 
-import WorkflowContext from "../../contexts/CreatorWorkflowContext";
-import { useAppSelector } from "../../hooks/useReduxHooks";
-import videoIcon from "../../images/videoIcon.svg";
-import { UploadMediaFile } from "../../types/commonTypes";
-import { rFetch } from "../../utils/rFetch";
-import LoadingComponent from "../common/LoadingComponent";
-import { TooltipBox } from "../common/Tooltip/TooltipBox";
-import { IMediaUpload } from "../creatorStudio/creatorStudio.types";
+import WorkflowContext from '../../contexts/CreatorWorkflowContext';
+import { useAppSelector } from '../../hooks/useReduxHooks';
+import videoIcon from '../../images/videoIcon.svg';
+import { UploadMediaFile } from '../../types/commonTypes';
+import { rFetch } from '../../utils/rFetch';
+import LoadingComponent from '../common/LoadingComponent';
+import { TooltipBox } from '../common/Tooltip/TooltipBox';
+import { IMediaUpload } from '../creatorStudio/creatorStudio.types';
 
-import MediaListBox from "./MediaListBox/MediaListBox";
-import UploadedListBox from "./UploadedListBox/UploadedListBox";
+import MediaListBox from './MediaListBox/MediaListBox';
+import UploadedListBox from './UploadedListBox/UploadedListBox';
 
-import "./DemoMediaUpload.css";
+import './DemoMediaUpload.css';
 
 const MediaUpload: React.FC<IMediaUpload> = () => {
   const { primaryColor, textColor } = useAppSelector((store) => store.colors);
   const { currentUserAddress } = useAppSelector((store) => store.web3);
 
   const selectCommonInfo = {
-    customClass: "form-control rounded-rair",
+    customClass: 'form-control rounded-rair',
     customCSS: {
       backgroundColor: `color-mix(in srgb, ${primaryColor}, #888888)`,
-      color: textColor,
+      color: textColor
     },
     optionCSS: {
-      color: textColor,
-    },
+      color: textColor
+    }
   };
 
   const [mediaList, setMediaList] = useState<UploadMediaFile[]>([]);
@@ -46,7 +45,7 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
       );
       const { success, list, error } = await rFetch(
         `/api/files/list?userAddress=${currentUserAddress}&itemsPerPage=${
-          firstData.totalNumber || "1"
+          firstData.totalNumber || '1'
         }`
       );
 
@@ -68,9 +67,9 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
   }, [currentUserAddress]);
 
   const handleNewUserStatus = useCallback(async () => {
-    const requestContract = await rFetch("/api/contracts/full?itemsPerPage=5");
+    const requestContract = await rFetch('/api/contracts/full?itemsPerPage=5');
     const { success, contracts } = await rFetch(
-      `/api/contracts/full?itemsPerPage=${requestContract.totalNumber || "5"}`
+      `/api/contracts/full?itemsPerPage=${requestContract.totalNumber || '5'}`
     );
 
     if (success) {
@@ -91,16 +90,16 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
     aux = aux.concat(
       media.map((item: File) => {
         return {
-          offer: "null",
-          category: "DEMO",
+          offer: 'null',
+          category: 'DEMO',
           title: item.name.slice(0, 29),
           file: item,
-          description: "test",
+          description: 'test',
           preview: URL.createObjectURL(item),
           contractAddress: undefined,
           productIndex: undefined,
-          storage: "null",
-          demo: false,
+          storage: 'null',
+          demo: false
         };
       })
     );
@@ -120,7 +119,7 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
   return (
     <div className="demo-media-wrapper">
       <h3 className="fw-bold">Video demo</h3>
-      <h6 className="m-auto col-5" style={{ color: "#A7A6A6" }}>
+      <h6 className="m-auto col-5" style={{ color: '#A7A6A6' }}>
         Max file size 500 mb each. Please add your email profile settings.
         Analytics will be emailed to you weekly
       </h6>
@@ -134,10 +133,9 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
                   {...getRootProps()}
                   style={{
                     border: `dashed 1px color-mix(in srgb, ${primaryColor}, #888888)`,
-                    position: "relative",
+                    position: 'relative'
                   }}
-                  className="w-100 h-100 rounded-rair col-6 text-center mb-3 p-5"
-                >
+                  className="w-100 h-100 rounded-rair col-6 text-center mb-3 p-5">
                   <input {...getInputProps()} />
                   <TooltipBox title="Drag and Drop Images">
                     <>
@@ -145,9 +143,9 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
                         alt=""
                         style={{
                           filter:
-                            primaryColor === "rhyno"
-                              ? "brightness(40%)"
-                              : undefined,
+                            primaryColor === 'rhyno'
+                              ? 'brightness(40%)'
+                              : undefined
                         }}
                         src={videoIcon}
                         className="mt-5 mb-3"
@@ -159,8 +157,8 @@ const MediaUpload: React.FC<IMediaUpload> = () => {
                     <>Drop the images here ...</>
                   ) : (
                     <>
-                      Drag and drop or{" "}
-                      <span style={{ color: "var(--bubblegum)" }}>click</span>{" "}
+                      Drag and drop or{' '}
+                      <span style={{ color: 'var(--bubblegum)' }}>click</span>{' '}
                       to upload unlockable content
                     </>
                   )}

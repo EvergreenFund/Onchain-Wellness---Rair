@@ -116,7 +116,7 @@ const LikeButton: React.FC<ILikeButton> = ({
         <CircularProgress sx={{ color: '#E882D5' }} size={40} thickness={4} />
       ) : (
         <>
-          {/* <TooltipBox
+          <TooltipBox
             title={`${liked ? 'Remove from Favorites' : 'Add to Favorites'}`}>
             <div
               className={likeButtonStyle}
@@ -132,7 +132,7 @@ const LikeButton: React.FC<ILikeButton> = ({
                 className="like-button"
               />
             </div>
-          </TooltipBox> */}
+          </TooltipBox>
         </>
       )}
     </>

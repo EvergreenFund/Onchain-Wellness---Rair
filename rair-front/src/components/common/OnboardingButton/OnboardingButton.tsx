@@ -6,6 +6,7 @@ import { Maybe } from '@metamask/providers/dist/utils';
 import { metaMaskIcon } from '../../../images';
 
 import './OnboardingButton.css';
+import { useAppSelector } from '../../../hooks/useReduxHooks';
 
 const ONBOARD_TEXT = 'Click here to install MetaMask!';
 const CONNECT_TEXT = 'Connect Wallet';
@@ -39,12 +40,6 @@ export function OnboardingButton() {
   }, [isMobileDevice]);
 
   useEffect(() => {
-    if (!onboarding.current) {
-      onboarding.current = new MetaMaskOnboarding();
-    }
-  }, []);
-
-  useEffect(() => {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       if (Array.isArray(accounts) && accounts.length > 0) {
         setButtonText(CONNECTED_TEXT);
@@ -75,9 +70,12 @@ export function OnboardingButton() {
   const onClick = () => {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       window.ethereum
-        .request({ method: 'eth_requestAccounts' })
+        ?.request({ method: 'eth_requestAccounts' })
         .then((newAccounts) => setAccounts(newAccounts));
     } else {
+      if (!onboarding.current) {
+        onboarding.current = new MetaMaskOnboarding();
+      }
       onboarding?.current?.startOnboarding();
     }
   };

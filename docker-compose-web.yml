@@ -1,7 +1,9 @@
 services:
   rair-node:
     container_name: 'rair-node'
-    image: rairprotocol/rair-node:latest
+    build:
+      context: rair-node
+      dockerfile: Dockerfile
     volumes:
       - ./rair-node/db:/usr/src/rair-node/db
       - ./rair-node/bin/Videos:/usr/src/rair-node/bin/Videos
@@ -65,6 +67,9 @@ services:
       FILEBASE_BUCKET: ${filebase_bucket}
       YOTI_CLIENT_ID: ${yoti_client_id}
       RATE_LIMIT_MINUTE: ${rate_limit_minute}
+      ZOOM_ACCOUNT_ID: ${zoom_account_id}
+      ZOOM_CLIENT_ID: ${zoom_client_id}
+      ZOOM_CLIENT_SECRET: ${zoom_client_secret}
     ports:
       - 3000:3000
       - 5000:5000
@@ -188,6 +193,29 @@ services:
       - 6379:6379
     networks:
       - rair-local
+  evergreen-front:
+    container_name: evergreen-front
+    build:
+      context: evergreen-front
+      dockerfile: Dockerfile.prod
+    environment:
+      VITE_SENTRY_ENABLED: ${sentry_enabled}
+      VITE_SENTRY_IO_ENDPOINT: ${sentry_endpoint}
+      VITE_SENTRY_IO_TRACE_RATE: ${sentry_trace_rate}
+      VITE_SENTRY_RELEASE: ${sentry_release}
+      VITE_GOOGLE_ANALYTICS: ${react-app-google-analytics}
+      VITE_GA_NAME: ${react-app-ga-name}
+      VITE_DISABLE_CREATOR_VIEWS: ${react-app-disable-creator-views}
+      VITE_HOME_PAGE: /
+      VITE_MATIC_MAIN_DIAMOND_FACTORY: ${matic_mainnet_diamond_factory_address}
+      VITE_MATIC_MAIN_DIAMOND_MARKETPLACE: ${matic_mainnet_diamond_marketplace_address}
+      VITE_NODE_SOCKET_URI: ${base_rairnode_url}
+    ports:
+      - 8088:80
+    networks:
+      - rair-local
+    depends_on:
+      - rair-node
   rair-front:
     container_name: rair-front
     build:
@@ -206,7 +234,7 @@ services:
       VITE_MATIC_MAIN_DIAMOND_MARKETPLACE: ${matic_mainnet_diamond_marketplace_address}
       VITE_NODE_SOCKET_URI: ${base_rairnode_url}
     ports:
-      - 8088:80
+      - 8089:80
     networks:
       - rair-local
     depends_on:

@@ -1,12 +1,10 @@
-//@ts-nocheck
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { TDocData } from "../../../axios.responseTypes";
-import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import { rFetch } from "../../../utils/rFetch";
-import LoadingComponent from "../../common/LoadingComponent";
-import { rairSDK } from "../../common/rairSDK";
-import MyfavoriteItem from "../../nft/PersonalProfile/PersonalProfileFavoritesTab/MyfavoriteItem/MyfavoriteItem";
+import { TDocData } from '../../../axios.responseTypes';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import { rFetch } from '../../../utils/rFetch';
+import LoadingComponent from '../../common/LoadingComponent';
+import MyfavoriteItem from '../../nft/PersonalProfile/PersonalProfileFavoritesTab/MyfavoriteItem/MyfavoriteItem';
 
 interface IUserProfileFavoritesTab {
   userAddress: string | undefined;
@@ -15,7 +13,7 @@ interface IUserProfileFavoritesTab {
 
 const UserProfileFavoritesTab: React.FC<IUserProfileFavoritesTab> = ({
   userAddress,
-  titleSearch,
+  titleSearch
 }) => {
   const [userFavotites, setUserFavorites] = useState<
     TDocData | null | undefined
@@ -27,10 +25,13 @@ const UserProfileFavoritesTab: React.FC<IUserProfileFavoritesTab> = ({
     if (userAddress) {
       const userAddressChanged = userAddress.toLowerCase();
       try {
-        const response = await rairSDK.favorites.getAllFavoritesOfAddress({
-          userAddress: userAddressChanged,
-        });
-        if (response.result) {
+        const response = await rFetch(
+          `/api/favorites/${userAddressChanged}`,
+          undefined,
+          undefined,
+          false
+        );
+        if (response.success) {
           setUserFavorites(response);
         } else {
           setUserFavorites(null);
@@ -45,15 +46,16 @@ const UserProfileFavoritesTab: React.FC<IUserProfileFavoritesTab> = ({
     if (userAddress) {
       if (userAddress) {
         try {
-          await rairSDK.favorites
-            .deleteFavorite({
-              id: currentLikeToken,
-            })
-            .then(() => {
-              getFavotiteData();
-            });
+          await rFetch(`/api/favorites/${currentLikeToken}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(() => {
+            getFavotiteData();
+          });
         } catch (e) {
-          console.info(e);
+          // console.info(e);
         }
       }
     }
