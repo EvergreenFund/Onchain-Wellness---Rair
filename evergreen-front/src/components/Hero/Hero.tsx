@@ -3,20 +3,28 @@ import OvalButton from '../OvalButton/OvalButton';
 import './Hero.css';
 import ExternalLinkGradient from '../../images/ExternalLinkGradient';
 
+const BorderText = ({ children }: { children: string }) => (
+  <span className='border-only'>
+    <span aria-hidden={true} className='over'>{children}</span>
+    {children}
+  </span>
+);
 
-export default function Hero () {
+export default function Hero() {
   const {
     primaryColor,
     secondaryColor,
     textColor,
     secondaryTextColor
-    
+
   } = useAppSelector((store) => store.colors);
   return (
     <div className='hero'>
-      <h1 style={{ color: secondaryTextColor }}><span className='border-only'><span aria-hidden={true} className='over'>onchain</span>onchain</span> wellness<br/>for <span className='border-only'><span aria-hidden={true} className='over'>a</span>a</span> <span className='border-only'><span aria-hidden={true} className='over'>better</span>better</span> future</h1>
+      <h1 className='header-text'>
+        <BorderText>onchain</BorderText> wellness<br /> for <BorderText>a</BorderText> <BorderText>better</BorderText> future
+      </h1>
       <OvalButton
-        onclick={() => {}}
+        onclick={() => { }}
         backgroundColor={secondaryColor}
         textColor={secondaryTextColor}
       >Coming soon</OvalButton>

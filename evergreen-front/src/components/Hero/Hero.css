@@ -1,17 +1,27 @@
-.hero {}
-
-.hero h1 {
-    font-size: 3.5rem;
+.header-text {
     text-transform: uppercase;
     font-weight: 700;
     text-align: left;
     -webkit-text-stroke: 1px white;
-    margin-bottom: 3rem;
+    color: white;
+}
+
+
+.hero h1 {
+    font-size: 3.5rem;
+}
+
+p.header-text {
+    font-size: 2.0rem !important;
 }
 
 @media (min-width: 768px) {
     .hero h1 {
         font-size: 5rem;
+    }
+
+    p.header-text {
+        font-size: 2.5rem !important;
     }
 }
 
