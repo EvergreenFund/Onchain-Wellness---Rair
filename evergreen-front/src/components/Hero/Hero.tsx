@@ -25,7 +25,7 @@ export default function Hero() {
         <BorderText>onchain</BorderText> wellness<br />
       </h1>
       <p className='header-text'>
-        <img src={BTCB} alt='B' style={{height: '0.90em'}}  />uilding Healthy Habits Powered by Bitcoin on base
+        <img src={BTCB} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
       </p>
       <OvalButton
         onclick={() => { }}
