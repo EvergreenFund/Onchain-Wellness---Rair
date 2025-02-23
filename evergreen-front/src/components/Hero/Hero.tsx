@@ -2,6 +2,7 @@ import { useAppSelector } from '../../hooks/useReduxHooks';
 import OvalButton from '../OvalButton/OvalButton';
 import './Hero.css';
 import ExternalLinkGradient from '../../images/ExternalLinkGradient';
+import BTCB from '../../images/BTCB.svg';
 
 const BorderText = ({ children }: { children: string }) => (
   <span className='border-only'>
@@ -24,7 +25,7 @@ export default function Hero() {
         <BorderText>onchain</BorderText> wellness<br />
       </h1>
       <p className='header-text'>
-        Building Healthy Habits Powered by Bitcoin on base
+        <img src={BTCB} alt='B'  />uilding Healthy Habits Powered by Bitcoin on base
       </p>
       <OvalButton
         onclick={() => { }}
@@ -41,22 +42,22 @@ export default function Hero() {
         <div
           className='description-features'
         >
-            <article>
-                <h4><ExternalLinkGradient /> 1:1 Individual Therapy</h4>
-                <p>Personalized, confidential support with licensed professionals to address your unique needs.</p>
-            </article>
-            <article>
-                <h4><ExternalLinkGradient /> AI Assisted Therapy</h4>
-                <p>Introducing TxAI, your customizable wellness companion, offering on-demand, private mental health support while rewarding you with incentives for building and maintaining healthy habits.</p>
-            </article>
-            <article>
-                <h4><ExternalLinkGradient /> Workshops</h4>
-                <p>Expert-led sessions focused on resilience, healing, and growth in a collaborative environment.</p>
-              </article>
+          <article>
+            <h4><ExternalLinkGradient /> 1:1 Individual Therapy</h4>
+            <p>Personalized, confidential support with licensed professionals to address your unique needs.</p>
+          </article>
+          <article>
+            <h4><ExternalLinkGradient /> AI Assisted Therapy</h4>
+            <p>Introducing TxAI, your customizable wellness companion, offering on-demand, private mental health support while rewarding you with incentives for building and maintaining healthy habits.</p>
+          </article>
+          <article>
+            <h4><ExternalLinkGradient /> Workshops</h4>
+            <p>Expert-led sessions focused on resilience, healing, and growth in a collaborative environment.</p>
+          </article>
 
         </div>
       </section>
-      
+
     </div>
   );
 };
