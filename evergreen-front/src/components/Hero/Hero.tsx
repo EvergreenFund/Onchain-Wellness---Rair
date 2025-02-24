@@ -2,7 +2,8 @@ import { useAppSelector } from '../../hooks/useReduxHooks';
 import OvalButton from '../OvalButton/OvalButton';
 import './Hero.css';
 import ExternalLinkGradient from '../../images/ExternalLinkGradient';
-import BTCB from '../../images/BTCB.svg';
+import BTCB_SVG from '../../images/BTCB.svg';
+// import BTCB from '../../images/btcb.png';
 
 const BorderText = ({ children }: { children: string }) => (
   <span className='border-only'>
@@ -25,7 +26,7 @@ export default function Hero() {
         <BorderText>onchain</BorderText> wellness<br />
       </h1>
       <p className='header-text'>
-        <img src={BTCB} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
+        <img src={BTCB_SVG} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
       </p>
       <OvalButton
         onclick={() => { }}
