@@ -5,6 +5,7 @@ import ExternalLinkGradient from '../../images/ExternalLinkGradient';
 import BTCB_SVG from '../../images/BTCB.svg';
 import BTCB_64 from '../../images/btcb-64.png';
 import BTCB_40 from '../../images/btcb-40.png';
+import BTCB_128 from '../../images/btcb-128.png';
 // import BTCB from '../../images/btcb.png';
 
 const BorderText = ({ children }: { children: string }) => (
@@ -32,6 +33,9 @@ export default function Hero() {
       </p>
       <p className='header-text'>
         <img src={BTCB_64} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
+      </p>
+      <p className='header-text'>
+        <img src={BTCB_128} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
       </p>
       <OvalButton
         onclick={() => { }}
