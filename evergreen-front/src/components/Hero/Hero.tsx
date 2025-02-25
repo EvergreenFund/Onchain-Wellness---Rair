@@ -29,12 +29,6 @@ export default function Hero() {
         <BorderText>onchain</BorderText> wellness<br />
       </h1>
       <p className='header-text'>
-        <img src={BTCB_40} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
-      </p>
-      <p className='header-text'>
-        <img src={BTCB_64} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
-      </p>
-      <p className='header-text'>
         <img src={BTCB_128} alt='B'/>uilding Healthy Habits Powered by Bitcoin on base
       </p>
       <OvalButton
