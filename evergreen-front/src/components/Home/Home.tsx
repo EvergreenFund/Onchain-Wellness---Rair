@@ -212,7 +212,7 @@ const Home = () => {
                   <p>Leverage blockchain technology for secure and private session bookings, protecting your identity and data.</p>
                 </div>
                 <div className='individual-therapy-feature'>
-                  <Badge><h4>Tokenized Rewards</h4></Badge>
+                  <Badge><h4>Earn BTCB tokens</h4></Badge>
                   <p>Earn wellness tokens for active participation in therapy, workshops, and other activities, recognizing your commitment to mental well-being.</p>
                 </div>
             </div>
@@ -289,10 +289,6 @@ const Home = () => {
       <section className='home-section q-a-section'>
         <h2 style={{ color: secondaryTextColor }}>Frequently Asked Questions</h2>
         <div className='q-a-container'>
-            <details>
-              <summary>Built by Degens for Degens</summary>
-              <p>At Onchain Wellness, we understand the unique challenges faced by the crypto and Web3 communities because we’re part of it. "Built by Degens, for Degens" reflects our commitment to creating a platform tailored to the fast-paced, high-stakes world of decentralized work and trading. We’ve designed our services with your needs in mind—whether it’s maintaining privacy, managing stress, or finding balance in an always-on environment. As members of this community, we’re here to support your mental health while speaking your language.</p>
-            </details>
             <details>
               <summary>Why are we building Onchain?</summary>
               <p>Onchain Wellness is designed to leverage blockchain technology to address critical challenges in mental health care: privacy, accessibility, and trust. By building onchain, we ensure user data is secure, transactions are transparent, and identities remain private, creating a safe space for individuals to seek support without fear of stigma. This decentralized approach empowers users with full control over their mental health journey.</p>

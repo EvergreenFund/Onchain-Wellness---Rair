@@ -233,7 +233,7 @@
 }
 
 .q-a-section .q-a-container {
-    max-width: 800px;
+    width: 100%;
     border-radius: 20px;
     border-width: 7px;
     border: 1px solid rgba(255, 255, 255, 0.35);
