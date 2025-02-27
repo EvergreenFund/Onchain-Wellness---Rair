@@ -197,23 +197,6 @@ const MainHeader: FC<IMainHeader> = ({
             color: secondaryTextColor,
           }}
         >
-          <li style={{
-            color: pathname === '/' ? '#fff' : undefined,
-          }}>
-            <Link to="/dapp-lo0m1pa2k">Home</Link>
-          </li>
-          <li
-            style={{
-              color: pathname === '/about-page' ? '#fff' : undefined,
-            }}
-          >
-            <Link to="/about">About</Link>
-          </li>
-          <li style={{
-            color: pathname === '/user/videos' ? '#fff' : undefined,
-          }}>
-            <Link to="/user/videos">Videos</Link>
-          </li>
           </ul>
       </nav>
       
