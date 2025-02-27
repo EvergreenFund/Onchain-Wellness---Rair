@@ -174,7 +174,7 @@ const Home = () => {
                   color: 'transparent',
                   WebkitBackgroundClip: 'text',
                 }}
-              > Cost TBD</strong>
+              >TBD</strong>
               <h3
                 style={{
                   color: secondaryTextColor
