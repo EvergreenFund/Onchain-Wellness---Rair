@@ -122,7 +122,7 @@ const Home = () => {
       <section className='home-section subscription-plans'>
         <header className='plans-header' style={{ color: secondaryTextColor }}>
           <h6>GET ACCESS</h6>
-          <h2>Subscriptions <span style={{
+          <h2>Subscription <span style={{
                   background: secondaryColor,
                   color: 'transparent',
                   WebkitBackgroundClip: 'text',
