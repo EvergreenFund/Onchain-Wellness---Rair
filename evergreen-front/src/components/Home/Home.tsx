@@ -142,7 +142,7 @@ const Home = () => {
                   color: 'transparent',
                   WebkitBackgroundClip: 'text',
                 }}
-              >Free</strong>
+              >30 day Free trial</strong>
               <h3
                 style={{
                   color: secondaryTextColor
@@ -153,7 +153,6 @@ const Home = () => {
                 <li>Access to TxAI</li>
                 <li>Unlimited access to Live Group Sessions</li>
                 <li>Tokenized Rewards for Engagement</li>
-                <li>30 days free trial</li>
               </ul>
             </div>
             <div className='plan-card-footer'>
@@ -175,7 +174,7 @@ const Home = () => {
                   color: 'transparent',
                   WebkitBackgroundClip: 'text',
                 }}
-              >TBD</strong>
+              > Cost TBD</strong>
               <h3
                 style={{
                   color: secondaryTextColor
