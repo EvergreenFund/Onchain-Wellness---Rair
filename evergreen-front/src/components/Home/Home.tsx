@@ -35,6 +35,10 @@ const Home = () => {
   const [dataForUser, setDataForUser] = useState<TProducts>();
   const [selectedOfferIndex, setSelectedOfferIndex] = useState<string>();
 
+  function sendMail() {
+    window.location.href = 'mailto:admin@onchainwellness.com';
+  }
+
     const getParticularOffer = useCallback(async () => {
     try {
       const response = await axios.get<IOffersResponseType>(
@@ -106,7 +110,7 @@ const Home = () => {
       >
         <h2>Let’s Personalize Your Wellness Experience</h2>
         <OvalButton
-          onclick={() => {}}
+          onclick={sendMail}
           backgroundColor={secondaryTextColor}
           textColor={primaryColor}
         >
