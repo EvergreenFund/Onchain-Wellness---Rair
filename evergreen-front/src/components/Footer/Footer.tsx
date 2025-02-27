@@ -91,10 +91,7 @@ const Footer: FC<IFooter> = () => {
               legal
             ) : (
               <>
-                {import.meta.env.VITE_TESTNET === 'true'
-                  ? ' HotDrops'
-                  : ' Rairtech'}{' '}
-                {new Date().getFullYear()}. All rights reserved. Onchain Wellness
+                {new Date().getFullYear()} All rights reserved. Onchain Wellness
               </>
             )}
           </li>
