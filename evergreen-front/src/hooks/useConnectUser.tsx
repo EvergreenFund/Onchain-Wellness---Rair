@@ -163,12 +163,20 @@ const useConnectUser = () => {
     () =>
       new Promise((resolve: (value: string) => void) => {
         reactSwal.fire({
-          title: `Welcome to ${hotdropsVar === 'true' ? 'HOTDROPS' : 'RAIR'}`,
+          title: `Welcome to Onchain Wellness`,
           html: (
             <>
               Please select a login method
               <hr />
               <div style={{display: 'flex', flexDirection: 'column', gap: '10px', justifyContent: 'space-around', alignItems: 'cnter'}}>
+             {!coinbaseInstalled ? (
+                <OnboardingCoinbaseButton />
+              ) : (
+                <BlockButton
+                  onclick={() => resolve('coinbase')}>
+                  Connect Coinbase <img width={24} src={coinbaseIcon} alt="metamask" />
+                </BlockButton>
+              )}
               {!metamaskInstalled ? (
                 <OnboardingButton />
               ) : (
@@ -177,14 +185,6 @@ const useConnectUser = () => {
                     <span className='flex flex-row items-center justify-between'>
                   Connect Metamask <img width={24} src={metaMaskIcon} alt="metamask" />
                     </span>
-                </BlockButton>
-              )}
-             {!coinbaseInstalled ? (
-                <OnboardingCoinbaseButton />
-              ) : (
-                <BlockButton
-                  onclick={() => resolve('coinbase')}>
-                  Connect Coinbase <img width={24} src={coinbaseIcon} alt="metamask" />
                 </BlockButton>
               )}
               </div>
