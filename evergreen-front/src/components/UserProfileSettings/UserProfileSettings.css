@@ -33,11 +33,6 @@
   z-index: 29;
 }
 
-.popup-content.popup-settings-block-content {
-  position: absolute !important;
-  right: 130px;
-  top: 85px;
-}
 
 .popup-content.popup-notification-block-content {
   position: absolute !important;
