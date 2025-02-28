@@ -21,8 +21,8 @@ import PurchaseTokenButton from '../../../../common/PurchaseToken';
 import { ImageLazy } from '../../../ImageLazy/ImageLazy';
 import { TParamsNftItemForCollectionView } from '../../../mockupPage.types';
 import { ICollectionInfo } from '../../nftList.types';
-
 import { ModalContentCloseBtn } from '../../../utils/button/ShowMoreItems';
+import btcb_128 from '../../../../../images/btcb-128.png'
 
 import './CollectionInfo.css';
 import { setRequestedChain } from '../../../../../redux/web3Slice';
@@ -48,11 +48,7 @@ const EasyMintRow = ({
     <BlockItemCollection className="block-item-collection">
       <div className="item-name">
         <ImageLazy
-          src={
-            tokenData && tokenData[0]?.metadata
-              ? token?.range[0] && tokenData[token.range[0]]?.metadata.image
-              : defaultPhoto
-          }
+          src={defaultPhoto}
           alt="Created by user"
         />
         <div className="item-name-text">{token.offerName}</div>
@@ -162,13 +158,8 @@ const CollectionInfo: FC<ICollectionInfo> = ({
   const { width } = useWindowDimensions();
   const dispatch = useAppDispatch();
 
-  const hotdropsVar = import.meta.env.VITE_TESTNET;
-
-  const defaultPhoto =
-    hotdropsVar === 'true'
-      ? defaultHotDrops
-      : `${import.meta.env.VITE_IPFS_GATEWAY
-      }/QmNtfjBAPYEFxXiHmY5kcPh9huzkwquHBcn9ZJHGe7hfaW`;
+  const defaultPhoto = btcb_128
+  
 
   const getTokens = async () => {
     const { data } = await axios.get<TNftItemResponse>(
