@@ -386,7 +386,7 @@ const SerialNumberBuySell: React.FC<ISerialNumberBuySell> = ({
       showConfirmButton: false
     });
     const response = await axios.post(
-      '/api/meetings/create',
+      '/api/meetings/me',
       {
         offer: offerData?._id
       }
