@@ -85,8 +85,8 @@ export function OnboardingButton() {
       <BlockButton
         onclick={()=>{}}
         >
-        Install Metamask 
-        {hotDropsVar !== 'true' && <img src={metaMaskIcon}></img>}
+        Install Metamask <span> </span>
+         {hotDropsVar !== 'true' &&  <img width={24} src={metaMaskIcon}></img>}
       </BlockButton>
     </a>
   ) : (

@@ -83,8 +83,8 @@ export function OnboardingCoinbaseButton() {
   return (
     <a target={'_blank'} href={CoinbaseAppDeepLink} rel="noreferrer">
       <BlockButton onclick={()=>{}}>
-        Install Coinbase
-        {hotDropsVar !== 'true' && <img width={showButtonPhone ? 48 : 24} src={coinbaseIcon}></img>}
+        Install Coinbase <span> </span>
+        {hotDropsVar !== 'true' && <img width={24} src={coinbaseIcon}></img>}
       </BlockButton>
     </a>
   )
